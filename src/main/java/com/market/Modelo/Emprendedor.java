@@ -44,7 +44,8 @@ public class Emprendedor extends Persona implements EmprendedorI{
         this.gastos = gastos;
     }
 
-    public void VentaProducto(int id, Date fecha,
+    @Override
+    public void ventaProducto(int id, Date fecha,
                               Cliente cliente, Emprendedor emprendedor,
                               String metodoPago,List<Producto> productos
     ) {
@@ -60,7 +61,7 @@ public class Emprendedor extends Persona implements EmprendedorI{
         }
 
      }
-
+    @Override
     public boolean buscarProducto(int id){
         for (Producto p: this.productos ){
             if( id==p.getId()){
@@ -71,6 +72,18 @@ public class Emprendedor extends Persona implements EmprendedorI{
         }
         return false;
     }
+
+
+    @Override
+    public double gastos() {
+        return 0;
+    }
+
+    @Override
+    public double ingresos() {
+        return 0;
+    }
+    @Override
     public void addProducto(int id, String nombre, double precioC , double precioV, Date fechaV){
 
         Producto p = new Producto(id,nombre,precioC,precioV,fechaV);
@@ -78,7 +91,7 @@ public class Emprendedor extends Persona implements EmprendedorI{
            this.productos.add(p);
         }}
 
-
+    @Override
     public void deleteProducto(){
 
     }

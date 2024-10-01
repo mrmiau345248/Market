@@ -1,17 +1,18 @@
 package com.market.Modelo;
 
 import java.util.Date;
+import java.util.List;
 
 public interface EmprendedorI {
-    void VentaProducto(int id, Date fecha,
+    void ventaProducto(int id, Date fecha,
                        Cliente cliente, Emprendedor emprendedor,
-                       String metodoPago
-                       );
+                       String metodoPago, List<Producto> productos);
     double gastos();
     double ingresos();
-    void addProducto(int id, String nombre, double precioC , double precioV, Date fechaV);
+    void addProducto(int id, String nombre, double precioC ,
+                     double precioV, Date fechaV);
     void deleteProducto();
-    boolean buscarProducto(int id,);
+    boolean buscarProducto(int id);
 
 
 }
