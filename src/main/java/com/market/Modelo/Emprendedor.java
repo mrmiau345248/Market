@@ -8,6 +8,7 @@ public class Emprendedor extends Persona implements EmprendedorI{
 
     private List<Producto> productos = new ArrayList<>();
     private double ingresos, gastos;
+    private List<Compra> ventas;
 
     public Emprendedor(String nombre, String apellido,
                        String cedula, String telefono,
@@ -18,6 +19,15 @@ public class Emprendedor extends Persona implements EmprendedorI{
         this.productos = new ArrayList<>();
         this.ingresos = ingresos();
         this.gastos = gastos();
+        this.ventas = new ArrayList<>();
+    }
+
+    public List<Compra> getVentas() {
+        return ventas;
+    }
+
+    public void setVentas(List<Compra> ventas) {
+        this.ventas = ventas;
     }
 
     public List<Producto> getProductos() {
@@ -45,11 +55,8 @@ public class Emprendedor extends Persona implements EmprendedorI{
     }
 
     @Override
-    public void ventaProducto(int id, Date fecha,
-                              Cliente cliente, Emprendedor emprendedor,
-                              String metodoPago,List<Producto> productos
+    public void ventaProducto(Compra compra
     ) {
-        Compra compra = new Compra(id, fecha, cliente, emprendedor, metodoPago, productos);
 
 
         for( Producto p: compra.getProductosC()) {
@@ -59,6 +66,7 @@ public class Emprendedor extends Persona implements EmprendedorI{
             }
 
         }
+        addVenta(compra);
 
      }
     @Override
@@ -72,16 +80,35 @@ public class Emprendedor extends Persona implements EmprendedorI{
         }
         return false;
     }
+    @Override
+    public Producto traerProducto(int id){
+        for (Producto p: this.productos ){
+            if( id==p.getId()){
+
+                return p;
+            }
+
+        }
+        return null;
+    }
 
 
     @Override
     public double gastos() {
-        return 0;
+        double gastos = 0;
+        for (Producto p : this.productos) {
+            gastos += p.getPrecioC();
+        }
+        return gastos;
     }
 
     @Override
     public double ingresos() {
-        return 0;
+        double ingresos = 0;
+        for( Producto p: this.productos){
+            ingresos += p.getPrecioV();
+        }
+        return ingresos;
     }
     @Override
     public void addProducto(int id, String nombre, double precioC , double precioV, Date fechaV){
@@ -92,7 +119,17 @@ public class Emprendedor extends Persona implements EmprendedorI{
         }}
 
     @Override
-    public void deleteProducto(){
+    public void deleteProducto(int id){
+        if(buscarProducto(id)){
+           this.productos.remove(traerProducto(id));
+
+        }
+    }
+
+    @Override
+    public void addVenta(Compra c){
+
+        this.ventas.add(c);
 
     }
     }

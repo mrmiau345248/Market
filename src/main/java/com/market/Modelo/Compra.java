@@ -85,6 +85,7 @@ public class Compra implements CompraI{
     public double monto(){
         return 0;
     }
+    @Override
     public boolean buscarProducto(int id){
         for (Producto p: this.productosC ){
             if( id==p.getId()){
@@ -94,5 +95,36 @@ public class Compra implements CompraI{
 
         }
         return false;
+    }
+
+    @Override
+    public Producto traerProducto(int id){
+        for (Producto p: this.productosC ){
+            if( id==p.getId()){
+
+                return p;
+            }
+
+        }
+        return null;
+    }
+
+
+
+
+    @Override
+    public void addProducto(int id, String nombre, double precioC , double precioV, Date fechaV){
+
+        Producto p = new Producto(id,nombre,precioC,precioV,fechaV);
+        if(!buscarProducto(id)){
+            this.productosC.add(p);
+        }}
+
+    @Override
+    public void deleteProducto(int id){
+        if(buscarProducto(id)){
+            this.productosC.remove(traerProducto(id));
+
+        }
     }
 }
