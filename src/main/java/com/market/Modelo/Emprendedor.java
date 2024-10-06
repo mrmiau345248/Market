@@ -71,25 +71,28 @@ public class Emprendedor extends Persona implements EmprendedorI{
      }
     @Override
     public boolean buscarProducto(int id){
+        boolean encontrado=false;
         for (Producto p: this.productos ){
             if( id==p.getId()){
 
-                return true;
+                encontrado= true;
+                return encontrado;
             }
 
         }
-        return false;
+        return encontrado;
     }
     @Override
     public Producto traerProducto(int id){
+        Producto producto=null;
         for (Producto p: this.productos ){
             if( id==p.getId()){
 
-                return p;
+                producto=p;
             }
 
         }
-        return null;
+            return producto;
     }
 
 
@@ -128,9 +131,7 @@ public class Emprendedor extends Persona implements EmprendedorI{
 
     @Override
     public void addVenta(Compra c){
-
         this.ventas.add(c);
-
     }
     }
 

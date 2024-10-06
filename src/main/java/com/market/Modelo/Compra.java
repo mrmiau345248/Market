@@ -82,31 +82,43 @@ public class Compra implements CompraI{
     public void setEmprendedor(Emprendedor emprendedor) {
         this.emprendedor = emprendedor;
     }
+
+    @Override
     public double monto(){
-        return 0;
+        double monto=0;
+        for( Producto p: this.productosC){
+            monto+=p.getPrecioV();
+        }
+
+
+        return monto;
     }
     @Override
     public boolean buscarProducto(int id){
+        boolean encontrado=false;
         for (Producto p: this.productosC ){
             if( id==p.getId()){
 
-                return true;
+                encontrado=true;
+                return encontrado;
             }
 
         }
-        return false;
+        return encontrado;
     }
 
     @Override
     public Producto traerProducto(int id){
+        Producto producto=null;
         for (Producto p: this.productosC ){
             if( id==p.getId()){
 
-                return p;
+                producto=p;
+
             }
 
         }
-        return null;
+        return producto;
     }
 
 
@@ -127,4 +139,6 @@ public class Compra implements CompraI{
 
         }
     }
+
+
 }

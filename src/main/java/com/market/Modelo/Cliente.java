@@ -22,16 +22,9 @@ public class Cliente extends Persona implements ClienteI{
     public void setCompras(List<Compra> compras) {
         this.compras = compras;
     }
-    @Override
-    public void compraProducto(int id, Date fecha,
-                              Cliente cliente, Emprendedor emprendedor,
-                              String metodoPago,List<Producto> productos
-    ) {
-        Compra compra = new Compra(id, fecha, cliente, emprendedor, metodoPago, productos);
 
-        this.compras.add(compra);
 
+    public void unirCliente(Compra c){
+        this.getCompras().add(c);
     }
-
-
 }
