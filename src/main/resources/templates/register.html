@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Registro - Marketplace</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css">
+</head>
+<body>
+    <div class="divLogoLogin">
+        <img src="../img/javeriana.svg" alt="Logo Javeriana" class="logoJaveLogin">
+    </div>
+
+    <h1 class="tituloLog">MARKETPLACE</h1>
+
+    <div class="bodyForm">
+        <div class="wrapperRegister">
+            <form action="#">
+                <div class="form-row">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Nombre(s)" required>
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Apellido(s)" required>
+                </div>
+                <div class="form-row">
+                    <i class="fas fa-phone"></i>
+                    <input type="text" placeholder="Teléfono" required>
+                    <i class="fas fa-id-card"></i>
+                    <input type="text" placeholder="Cédula" required>
+                </div>
+                <div class="form-row">
+                    <i class="fas fa-user"></i>
+                    <input type="text" placeholder="Usuario" required>
+                    <i class="fas fa-envelope"></i>
+                    <input type="email" placeholder="Email" required>
+                </div>
+                <div class="form-row">
+                    <i class="fas fa-venus-mars"></i>
+                    <select required>
+                        <option value="" disabled selected>Género</option>
+                        <option value="masculino">Masculino</option>
+                        <option value="femenino">Femenino</option>
+                        <option value="otro">Otro</option>
+                    </select>
+                    <i class="fas fa-lock"></i>
+                    <input type="password" placeholder="Contraseña" required>
+                </div>
+
+                <div class="checkbox-row">
+                    <input type="checkbox" id="terms">
+                    <label for="terms">Acepto los términos y condiciones</label>
+                </div>
+
+                <div class="submit-row">
+                    <input type="submit" value="Registrarse">
+                </div>
+            </form>
+        </div>
+    </div>
+</body>
+</html>
