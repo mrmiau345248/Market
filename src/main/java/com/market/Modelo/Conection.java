@@ -1,9 +1,12 @@
-package com.market.Controladores;
+package com.market.Modelo;
 
 import com.market.MarketApplication;
 import org.springframework.boot.SpringApplication;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.stereotype.Service;
 
 import java.sql.*;
+@Service
 public class Conection {
 
     private String url = "jdbc:oracle:thin:@localhost:1521:XE";
@@ -44,5 +47,12 @@ public class Conection {
         } catch (SQLException e) {
             throw new RuntimeException("Error al cerrar la conexión", e);
         }
+    }
+
+
+    public void crearEmprendedor(String nombre, String apellido,
+                                 String cedula, String telefono,
+                                 Date birth){
+
     }
 }
