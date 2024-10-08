@@ -36,7 +36,7 @@ public class manageDB {
 
 
     @PostMapping("/Emprendedor")
-    public void crearEmprendedor(@ResponseBody Emprendedor emprendedor){
+    public void crearEmprendedor(Emprendedor emprendedor){
         try{
 
         }catch(Exception e){
