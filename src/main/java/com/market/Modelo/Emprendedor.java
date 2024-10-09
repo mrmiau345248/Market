@@ -1,18 +1,31 @@
 package com.market.Modelo;
 
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Component;
+
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
-
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
 public class Emprendedor extends Persona implements EmprendedorI{
 
     private List<Producto> productos = new ArrayList<>();
-    private double ingresos, gastos;
+    private double ingresos;
+    private double gastos;
     private List<Compra> ventas;
 
+
+    @Autowired
     public Emprendedor(String nombre, String apellido,
                        String cedula, String telefono,
-                       Date birth) {
+                       Date birth, Conection conection) {
         super(nombre, apellido,
                 cedula, telefono,
                 birth);
@@ -20,38 +33,8 @@ public class Emprendedor extends Persona implements EmprendedorI{
         this.ingresos = ingresos();
         this.gastos = gastos();
         this.ventas = new ArrayList<>();
-    }
+        this.conection;
 
-    public List<Compra> getVentas() {
-        return ventas;
-    }
-
-    public void setVentas(List<Compra> ventas) {
-        this.ventas = ventas;
-    }
-
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public void setProductos(List<Producto> productos) {
-        this.productos = productos;
-    }
-
-    public double getIngresos() {
-        return ingresos;
-    }
-
-    public void setIngresos(double ingresos) {
-        this.ingresos = ingresos;
-    }
-
-    public double getGastos() {
-        return gastos;
-    }
-
-    public void setGastos(double gastos) {
-        this.gastos = gastos;
     }
 
     @Override
@@ -113,8 +96,10 @@ public class Emprendedor extends Persona implements EmprendedorI{
         }
         return ingresos;
     }
+
+
     @Override
-    public void addProducto(int id, String nombre, double precioC , double precioV, Date fechaV){
+    public void addProducto(int id, String nombre, double precioC , double precioV, java.sql.Date fechaV){
 
         Producto p = new Producto(id,nombre,precioC,precioV,fechaV);
         if(!buscarProducto(id)){

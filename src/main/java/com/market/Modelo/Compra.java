@@ -125,7 +125,7 @@ public class Compra implements CompraI{
 
 
     @Override
-    public void addProducto(int id, String nombre, double precioC , double precioV, Date fechaV){
+    public void addProducto(int id, String nombre, double precioC , double precioV, java.sql.Date fechaV){
 
         Producto p = new Producto(id,nombre,precioC,precioV,fechaV);
         if(!buscarProducto(id)){

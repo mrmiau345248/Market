@@ -3,11 +3,9 @@ package com.market.Controladores;
 
 import com.market.Modelo.Conection;
 import com.market.Modelo.Emprendedor;
+import com.market.Modelo.Producto;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.ResponseBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.sql.Connection;
 
@@ -16,17 +14,17 @@ import java.sql.Connection;
 
 public class manageDB {
 
-    private Conection connection;
+    private final Conection conection;
 
     @Autowired
-    public manageDB(Conection connection) {
-        this.connection = connection;
+    public manageDB(Conection conection) {
+        this.conection = conection;
     }
 
 
     public void mostrarDB(String sql) {
         try {
-           String cons= connection.ejecutarConsulta(sql);
+           String cons= conection.ejecutarConsulta(sql);
         } catch (Exception e) {
 
 
@@ -35,11 +33,12 @@ public class manageDB {
     }
 
 
-    @PostMapping("/Emprendedor")
-    public void crearEmprendedor(Emprendedor emprendedor){
+    @PostMapping("/Producto")
+    public void crearProducto(@RequestBody Producto producto){
         try{
-
+            conection.crearProducto(producto.getId(),producto.getNombre(),producto.getPrecioC(),producto.getPrecioV(), producto.getFechaV());
         }catch(Exception e){
+            throw new RuntimeException("Error al agregar el emprendedor", e);
 
         }
     }

@@ -6,9 +6,9 @@ public class Producto {
     private  int id;
     private String nombre;
     private double precioC, precioV;
-    private Date fechaV;
+    private java.sql.Date fechaV;
 
-    public Producto(int id, String nombre, double precioC, double precioV, Date fechaV) {
+    public Producto(int id, String nombre, double precioC, double precioV, java.sql.Date fechaV) {
         this.id = id;
         this.nombre = nombre;
         this.precioC = precioC;
@@ -48,11 +48,11 @@ public class Producto {
         this.precioV = precioV;
     }
 
-    public Date getFechaV() {
+    public java.sql.Date getFechaV() {
         return fechaV;
     }
 
-    public void setFechaV(Date fechaV) {
+    public void setFechaV(java.sql.Date fechaV) {
         this.fechaV = fechaV;
     }
 }

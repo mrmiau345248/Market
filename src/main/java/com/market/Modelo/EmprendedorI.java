@@ -8,7 +8,7 @@ public interface EmprendedorI {
     double gastos();
     double ingresos();
     void addProducto(int id, String nombre, double precioC ,
-                     double precioV, Date fechaV);
+                     double precioV, java.sql.Date fechaV);
     void deleteProducto( int id);
     boolean buscarProducto(int id);
     Producto traerProducto(int id);
