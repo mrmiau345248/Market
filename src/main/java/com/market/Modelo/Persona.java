@@ -14,10 +14,10 @@ import java.util.List;
 @AllArgsConstructor
 abstract public class Persona {
     private String nombre;
-    String apellido;
-    String cedula;
-    String telefono;
-    private Date birth;
+    private String apellido;
+    private String cedula;
+    private String telefono;
+    private java.sql.Date birth;
 
 
 }

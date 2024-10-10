@@ -1,8 +1,5 @@
 package com.market.Modelo;
 
-import java.util.Date;
-import java.util.List;
-
 public interface EmprendedorI {
     void ventaProducto(Compra c);
     double gastos();

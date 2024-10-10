@@ -1,8 +1,6 @@
 package com.market.Modelo;
 
-import com.market.MarketApplication;
-import org.springframework.boot.SpringApplication;
-import org.springframework.context.annotation.Configuration;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.jdbc.core.JdbcTemplate;
 import org.springframework.stereotype.Service;
 
@@ -10,20 +8,23 @@ import java.sql.*;
 @Service
 public class Conection {
 
-    private final JdbcTemplate jdbcTemplate;
+    private  JdbcTemplate jdbcTemplate;
     private String url = "jdbc:oracle:thin:@localhost:1521:XE";
     private String username = "system";
     private String password = "240711";
     private Connection connection;
 
-    // Constructor para establecer la conexión
+    @Autowired
     public Conection(JdbcTemplate jdbcTemplate) {
+        this.jdbcTemplate = jdbcTemplate;
+    }
+    // Constructor para establecer la conexión
+    public Conection() {
         try {
             this.connection = DriverManager.getConnection(url, username, password);
         } catch (SQLException e) {
             throw new RuntimeException("Error al conectar con la base de datos", e);
         }
-        this.jdbcTemplate = jdbcTemplate;
     }
 
     // Método para ejecutar una consulta y obtener resultados
@@ -52,17 +53,10 @@ public class Conection {
         }
     }
 
-    /*
-    public void crearEmprendedor(String nombre, String apellido,
-                                 String cedula, String telefono,
-                                 Date birth){
 
-    String sql= "INSERT INTO Emprendedor(nombre, "
 
-    }*/
-
-    public void crearProducto(int id, String nombre, double precioC, double precioV, Date fechaV){
-        String sql= "INSERT INTO Producto(id,nombre, precioC, precioV, fechaV) VALUES(?,?,?,?,?)";
+    public void crearProducto(int id, String nombre, double precioC, double precioV, java.sql.Date fechaV){
+        String sql= "INSERT INTO PRODUCTO(id,nombre, precioC, precioV, fechaV) VALUES(?,?,?,?,?)";
 
         try{
             jdbcTemplate.update(sql,id,nombre,precioC,precioV,fechaV);
@@ -71,4 +65,5 @@ public class Conection {
         }
 
     }
-}
+
+    }

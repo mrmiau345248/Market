@@ -1,30 +1,26 @@
 package com.market.Modelo;
 
+import jakarta.persistence.*;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
+@Getter
+@Setter
+@Entity
+@NoArgsConstructor
+@AllArgsConstructor
+@Table(name="cliente")
+public class Cliente extends Persona {
 
-public class Cliente extends Persona implements ClienteI{
+    @OneToMany
     private List<Compra> compras;
-    public Cliente(String nombre, String apellido,
-                   String cedula, String telefono,
-                   Date birth) {
-        super(nombre, apellido,
-                cedula, telefono,
-                birth);
-        this.compras = new ArrayList<>();
-    }
 
-    public List<Compra> getCompras() {
-        return compras;
-    }
+    @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private int id;
 
-    public void setCompras(List<Compra> compras) {
-        this.compras = compras;
-    }
-
-
-    public void unirCliente(Compra c){
-        this.getCompras().add(c);
-    }
 }
