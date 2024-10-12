@@ -17,6 +17,7 @@ import java.util.List;
 public class Cliente extends Persona {
 
     @OneToMany
+    @Column(name="Compras")
     private List<Compra> compras;
 
     @Id

@@ -14,8 +14,13 @@ public class Producto {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private  int id;
+    @Column(name="nombre")
     private String nombre;
-    private double precioC, precioV;
+    @Column(name="precioC")
+    private double precioC;
+    @Column(name="precioV")
+    private double precioV;
+    @Column(name="fechaV")
     private java.sql.Date fechaV;
 
 }
