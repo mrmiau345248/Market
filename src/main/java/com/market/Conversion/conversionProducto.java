@@ -7,12 +7,10 @@ import org.springframework.stereotype.*;
 @Component
 public class conversionProducto {
 public ProductoDto volverDto(Producto p){
-
     return new ProductoDto(p.getId(),p.getNombre(), p.getPrecioC(),p.getPrecioV(), p.getFechaV());
 }
 public Producto volverEntidad(ProductoDto pdto){
     return new Producto(pdto.getId(),pdto.getNombre(),pdto.getPrecioC(),pdto.getPrecioV(),pdto.getFechaV());
 }
-
 
 }

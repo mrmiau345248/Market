@@ -26,6 +26,14 @@ public class ProductoService {
         Producto p= conversionProducto.volverEntidad(pdto);
         return conversionProducto.volverDto( repoProducto.save(p));
     }
+    public void eliminarProducto(ProductoDto pdto){
+        Producto p = conversionProducto.volverEntidad(pdto);
+        repoProducto.delete(p);
+    }
+    public ProductoDto modificarProducto(int id, ProductoDto pdto){
+        Producto p= conversionProducto.volverEntidad(pdto);
+        return conversionProducto.volverDto( repoProducto.updat(p));
+    }
 
 
 }
