@@ -1,7 +1,4 @@
 package com.market.Dtos;
-
-
-import jakarta.persistence.Column;
 import lombok.*;
 
 @Data
@@ -10,9 +7,7 @@ import lombok.*;
 public class ProductoDto {
     private  int id;
     private String nombre;
-    private double precioC;
-    private double precioV;
+    private Double precioC;
+    private Double precioV;
     private java.sql.Date fechaV;
-
-
 }

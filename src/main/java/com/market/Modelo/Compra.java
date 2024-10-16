@@ -17,7 +17,7 @@ public class Compra {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
     private Date fecha;
-    private double monto;
+    private Double monto;
 
     @ManyToOne
     private Cliente cliente;

@@ -1,6 +1,10 @@
 package com.market.Dtos;
 
+import com.market.Modelo.Persona;
+import jakarta.persistence.Column;
 import lombok.*;
+
+import java.sql.Date;
 
 @Getter
 @Setter
@@ -11,8 +15,8 @@ import lombok.*;
 public class ClienteDto {
     private int id;
     private String nombre;
-
-
-
-    // Getters y Setters
+    private String apellido;
+    private String cedula;
+    private String telefono;
+    private Date birth;
 }

@@ -16,9 +16,9 @@ public class Producto {
     @Column(name="nombre")
     private String nombre;
     @Column(name="precioC")
-    private double precioC;
+    private Double precioC;
     @Column(name="precioV")
-    private double precioV;
+    private Double precioV;
     @Column(name="fechaV")
     private java.sql.Date fechaV;
 

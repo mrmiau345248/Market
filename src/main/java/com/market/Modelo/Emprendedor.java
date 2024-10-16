@@ -5,23 +5,25 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.*;
 
-@Getter
 @Setter
 @NoArgsConstructor
 @Entity // Anotación para definir que es una entidad de JPA
 @Table(name="emprendedor")
-public class Emprendedor extends Persona  {
+public class Emprendedor extends Persona {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
     @OneToMany
-    private List<Producto> productos = new ArrayList<>();
-    private double ingresos;
-    private double gastos;
-
+    @Column(name = "productos")
+    private List<Producto> productos ;
+    @Column(name = "ingresos")
+    private Double ingresos;
+    @Column(name = "gastos")
+    private Double gastos;
     @OneToMany
+    @Column(name = "ventas")
     private List<Compra> ventas;
 
     public double getGastos() {
@@ -36,5 +38,17 @@ public class Emprendedor extends Persona  {
                 .mapToDouble(Producto::getPrecioV)
                 .sum();
     }
-    // Getters y Setters
+
+    @Override
+    public int getId() {
+        return id;
+    }
+
+    public List<Producto> getProductos() {
+        return productos;
+    }
+
+    public List<Compra> getVentas() {
+        return ventas;
+    }
 }
