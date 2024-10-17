@@ -3,6 +3,8 @@ package com.market.Modelo;
 import com.market.Modelo.*;
 import jakarta.persistence.*;
 import lombok.*;
+
+import java.sql.Date;
 import java.util.*;
 
 @Setter
@@ -10,11 +12,6 @@ import java.util.*;
 @Entity // Anotación para definir que es una entidad de JPA
 @Table(name="emprendedor")
 public class Emprendedor extends Persona {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private int id;
-
     @OneToMany
     @Column(name = "productos")
     private List<Producto> productos ;
@@ -25,6 +22,15 @@ public class Emprendedor extends Persona {
     @OneToMany
     @Column(name = "ventas")
     private List<Compra> ventas;
+
+
+    public Emprendedor(int id, String nombre, String apellido, String cedula, String telefono, Date birth) {
+        super(id, nombre, apellido, cedula, telefono, birth);
+        this.productos = new ArrayList<>();
+        this.ingresos = 0.0;
+        this.gastos = 0.0;
+        this.ventas = new ArrayList<>();
+    }
 
     public double getGastos() {
         return productos.stream()
@@ -39,10 +45,6 @@ public class Emprendedor extends Persona {
                 .sum();
     }
 
-    @Override
-    public int getId() {
-        return id;
-    }
 
     public List<Producto> getProductos() {
         return productos;

@@ -1,41 +1,43 @@
 package com.market.Servicio;
-
-import com.market.Repos.RepoEmprendedor;
+import com.market.Dtos.*;
+import com.market.Repos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.market.Modelo.*;
-
+import com.market.Conversion.*;
 import java.util.Optional;
-
 @Service
 public class EmprendedorService {
 
     private RepoEmprendedor repoEmprendedor;
+    private conversionEmprendedor conversionEmprendedor;
+    private RepoCompra repoCompra;
+
 
     @Autowired
-    public EmprendedorService(RepoEmprendedor repoEmprendedor){
-        this.repoEmprendedor=repoEmprendedor;
+    public EmprendedorService(RepoEmprendedor repoEmprendedor, conversionEmprendedor conversionEmprendedor, RepoCompra repoCompra) {
+        this.repoEmprendedor = repoEmprendedor;
+        this.conversionEmprendedor = conversionEmprendedor;
+        this.repoCompra = repoCompra;
     }
 
-    // Lógica de negocio para la venta de un producto
-    public void ventaProducto(int emprendedorId, Compra compra) {
-        Optional<Emprendedor> emprendedorOptional = repoEmprendedor.findById(emprendedorId);
-        if (emprendedorOptional.isPresent()) {
-            Emprendedor emprendedor = emprendedorOptional.get();
-
-            // Remover los productos de la lista de productos del emprendedor
+    public EmprendedorDto ventaProducto(EmprendedorDto edto, CompraDto crdto) {
+        Optional<Emprendedor> emprendedorOptional = repoEmprendedor.findById(edto.getId());
+        Optional<Compra> compraOptional = repoCompra.findById(crdto.getId());
+        Emprendedor emprendedor =null;
+        Compra compra = null;
+        if (emprendedorOptional.isPresent()&&compraOptional.isPresent()) {
+             emprendedor = emprendedorOptional.get();
+             compra= compraOptional.get();
             for (Producto p : compra.getProductosC()) {
                 if (buscarProducto(emprendedor, p.getId())) {
                     emprendedor.getProductos().remove(p);
                 }
             }
-
-            // Añadir la venta a la lista de ventas
             emprendedor.getVentas().add(compra);
 
-            // Guardar cambios en la base de datos
-            repoEmprendedor.save(emprendedor);
         }
+        return conversionEmprendedor.volverDto(repoEmprendedor.save(emprendedor));
     }
 
     // Lógica para buscar un producto en la lista de productos del emprendedor
