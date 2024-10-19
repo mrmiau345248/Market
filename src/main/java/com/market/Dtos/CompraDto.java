@@ -1,10 +1,10 @@
 package com.market.Dtos;
-import com.market.Modelo.Cliente;
-import com.market.Modelo.Emprendedor;
+import com.market.Modelo.*;
 import lombok.*;
 import java.util.Date;
 
 @Data
+@AllArgsConstructor
 @NoArgsConstructor
 public class CompraDto {
     private int id;

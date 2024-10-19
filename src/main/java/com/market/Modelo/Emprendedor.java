@@ -12,6 +12,7 @@ import java.util.*;
 @Entity // Anotación para definir que es una entidad de JPA
 @Table(name="emprendedor")
 public class Emprendedor extends Persona {
+    @Getter
     @OneToMany
     @Column(name = "productos")
     private List<Producto> productos ;
@@ -19,6 +20,7 @@ public class Emprendedor extends Persona {
     private Double ingresos;
     @Column(name = "gastos")
     private Double gastos;
+    @Getter
     @OneToMany
     @Column(name = "ventas")
     private List<Compra> ventas;
@@ -43,14 +45,5 @@ public class Emprendedor extends Persona {
         return productos.stream()
                 .mapToDouble(Producto::getPrecioV)
                 .sum();
-    }
-
-
-    public List<Producto> getProductos() {
-        return productos;
-    }
-
-    public List<Compra> getVentas() {
-        return ventas;
     }
 }

@@ -1,33 +1,53 @@
 package com.market.Modelo;
-
 import jakarta.persistence.*;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
+import java.util.*;
 
-import java.util.Date;
-import java.util.List;
 @Entity
 @Setter
-@Getter
 @NoArgsConstructor
 @Table(name="compra")
 public class Compra {
+    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
+
+    @Getter
+    @Column(name="fecha")
     private Date fecha;
+
+    @Column(name="monto")
     private Double monto;
 
+    @Getter
     @ManyToOne
+    @JoinColumn(name = "cliente")
     private Cliente cliente;
+
+    @Getter
     @ManyToOne
+    @JoinColumn(name = "emprendedor")
     private Emprendedor emprendedor;
+
+    @Getter
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // Relación con Producto
+    @Column(name="productos")
     private List<Producto> productosC;
 
+    @Getter
+    @Column(name="metodoPago")
     private String metodoPago;
 
+    public Compra(int id, Date fecha, Double monto, Cliente cliente, Emprendedor emprendedor,  String metodoPago) {
+        this.id = id;
+        this.fecha = fecha;
+        this.monto = 0.0;
+        this.cliente = cliente;
+        this.emprendedor = emprendedor;
+        this.productosC = new ArrayList<>();
+        this.metodoPago = metodoPago;
+    }
 
     public double getMonto() {
         double monto = 0;
@@ -36,4 +56,5 @@ public class Compra {
         }
         return monto;
     }
+
 }
