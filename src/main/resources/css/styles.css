@@ -1,0 +1,193 @@
+/* Importing Google Fonts - Poppins */
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@400;500;600;700&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+body{
+  background: rgb(41,57,242);
+  background: linear-gradient(0deg, rgba(41,57,242,1) 0%, rgba(187,236,237,1) 100%);
+}
+
+.bodyForm {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  height: 80vh;
+  padding: 5px;
+  overflow: hidden;
+}
+
+.wrapper {
+  max-width: 400px;
+  width: 100%;
+  background: #fff;
+  border-radius: 5px;
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+}
+
+.divLogoLogin{
+  display: flex;
+  justify-content: center;
+  background-color: transparent;
+}
+
+.logoJaveLogin{
+  width: 15%;
+}
+
+.tituloLog{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  background:transparent;
+  font-size: x-large;
+  letter-spacing: 8px;
+  text-shadow: 4px 4px 10px rgba(0, 0, 0, 0.5);
+
+}
+
+.wrapper{
+  width: 350px; /* Cambiar el ancho del formulario */
+  height: 350px;
+}
+
+.wrapper form {
+  padding: 25px 25px;
+}
+
+.wrapper form .row {
+  height: 60px;
+  margin-top: 15px;
+  position: relative;
+}
+
+.wrapper form .row input {
+  height: 100%;
+  width: 100%;
+  outline: none;
+  padding-left: 70px;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  font-size: 10px;
+  transition: all 0.3s ease;
+}
+
+form .row input:focus {
+  border-color: #4e78c7;
+}
+
+form .row input::placeholder {
+  color: #999;
+}
+
+.wrapper form .row i {
+  position: absolute;
+  width: 55px;
+  height: 100%;
+  color: #fff;
+  font-size: 22px;
+  background: #4e78c7;
+  border: 1px solid #4e78c7;
+  border-radius: 5px 0 0 5px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapper form .pass {
+  margin-top: 12px;
+}
+
+
+.wrapper form .pass a:hover {
+  text-decoration: underline;
+}
+
+.wrapper form .button input {
+  margin-top: 15px;
+  color: #fff;
+  font-size: 15px;
+  font-weight: 500;
+  padding-left: 0px;
+  background: #4e78c7;
+  border: 1px solid #4e78c7;
+  cursor: pointer;
+}
+
+form .button input:hover {
+  background: #4e78c7;
+}
+
+.wrapper form .signup-link {
+  text-align: center;
+  margin-top: 45px;
+  font-size: 11px;
+}
+
+form .signup-link a:hover {
+  text-decoration: underline;
+}
+
+/*hasta aca va el login*/
+
+/*estilos register */
+
+.wrapperRegister{
+  justify-content: center;
+  align-items: center;
+  width: 400px; 
+  height: 350px;
+}
+
+.wrapperRegister form .form-row{
+  margin: 15px;
+}
+
+.wrapperRegister form .form-row input {
+  width: 42%;
+  height: 100%;
+  outline: none;
+  border-radius: 5px;
+  border: 1px solid lightgrey;
+  font-size: 10px;
+  transition: all 0.3s ease;
+}
+
+.wrapperRegister form .form-row .fa-user{
+  padding-left: 4px;
+}
+
+.wrapperRegister form .form-row .fa-lock{
+  padding-left: 65px;
+}
+
+.wrapperRegister form .submit-row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.wrapperRegister form .submit-row input{
+  margin-top: 10px;
+  color: #000000;
+  font-size: 15px;
+  font-weight: 500;
+  padding: 5px;
+  background: #f7f7f7;
+  border-radius: 5px;
+  border: 1px solid #4e78c7;
+  cursor: pointer;
+}
+
+.wrapperRegister form .checkbox-row{
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
