@@ -5,7 +5,11 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.market.Modelo.*;
 import com.market.Conversion.*;
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
+
+
 @Service
 public class EmprendedorService {
 
@@ -13,33 +17,84 @@ public class EmprendedorService {
     private RepoEmprendedor repoEmprendedor;
     private conversionEmprendedor conversionEmprendedor;
     private RepoCompra repoCompra;
+    public conversionProducto conversionProducto;
 
 
     @Autowired
-    public EmprendedorService(RepoEmprendedor repoEmprendedor, conversionEmprendedor conversionEmprendedor, RepoCompra repoCompra, RepoProducto repoProducto) {
+    public EmprendedorService(RepoEmprendedor repoEmprendedor, conversionEmprendedor conversionEmprendedor,
+                              RepoCompra repoCompra, RepoProducto repoProducto,
+                              conversionProducto conversionProducto) {
         this.repoEmprendedor = repoEmprendedor;
         this.conversionEmprendedor = conversionEmprendedor;
         this.repoCompra = repoCompra;
         this.repoProducto = repoProducto;
+        this.conversionProducto = conversionProducto;
     }
 
     public EmprendedorDto crearEmprendedor(EmprendedorDto edto) {
         Emprendedor emprendedor = conversionEmprendedor.volverEmprendedor(edto) ;
         return conversionEmprendedor.volverDto(repoEmprendedor.save(emprendedor));
     }
+
+
     public EmprendedorDto traerEmprendedor(EmprendedorDto edto) {
         Optional<Emprendedor> emprendedorOptional = repoEmprendedor.findById(edto.getId());
         Emprendedor emprendedor = null;
         if(emprendedorOptional.isPresent()) {
             emprendedor=emprendedorOptional.get();
-
-
         }
-
         return new conversionEmprendedor().volverDto(emprendedor);
     }
 
-public modificarEmpleado(EmprendedorDto edt)
+
+    public List<ProductoDto> traerListaProductos(Emprendedor edto){
+        Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(edto.getId());
+        Emprendedor emprendedor = null;
+        List<Producto> productos= new ArrayList<>();
+        List<ProductoDto> productosDto= new ArrayList<>();
+        if(optionalEmprendedor.isPresent()) {
+            emprendedor = optionalEmprendedor.get();
+            productos= emprendedor.getProductos();
+
+            for(Producto p: productos) {
+              productosDto.add(conversionProducto.volverDto(p));
+            }
+        }
+        return productosDto;
+    }
+
+
+    //Completar implementacion Compra para terminar esta clase
+    /*
+    public List<CompraDto> traerListaVentas(Emprendedor edto){
+        Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(edto.getId());
+        Emprendedor emprendedor = null;
+        List<Producto> productos= new ArrayList<>();
+        List<ProductoDto> productosDto= new ArrayList<>();
+        if(optionalEmprendedor.isPresent()) {
+            emprendedor = optionalEmprendedor.get();
+            productos= emprendedor.getProductos();
+
+            for(Producto p: productos) {
+                productosDto.add(conversionProducto.volverDto(p));
+            }
+        }
+        return productosDto;
+    }
+*/
+
+public EmprendedorDto modificarEmpleado(EmprendedorDto edto){
+      Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(edto.getId());
+      Emprendedor emprendedor = null;
+      if(optionalEmprendedor.isPresent()) {
+        emprendedor=optionalEmprendedor.get();
+
+       // if( emprendedor.get)
+
+
+      }
+return new EmprendedorDto();
+}
 
 
 

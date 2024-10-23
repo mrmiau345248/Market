@@ -44,27 +44,26 @@ public class ProductoService {
         }
     }
     public ProductoDto modificarProducto( ProductoDto pdto){
-        Producto p = conversionProducto.volverEntidad(pdto);
         // Buscar el producto existente en la base de datos
-        Optional<Producto> optionalProducto = repoProducto.findById(p.getId());
-
+        Optional<Producto> optionalProducto = repoProducto.findById(pdto.getId());
+        Producto p = null;
         if (optionalProducto.isPresent()) {
+            p= optionalProducto.get();
             // Obtener el producto existente
-            Producto productoExistente = optionalProducto.get();
             // Verificar y actualizar solo los campos que no sean nulos
             if (p.getNombre() != null) {
-                productoExistente.setNombre(p.getNombre());
+                p.setNombre(p.getNombre());
             }
             if (p.getPrecioC() != null) {
-                productoExistente.setPrecioC(p.getPrecioC());
+                p.setPrecioC(p.getPrecioC());
             }
             if (p.getPrecioV() != null) {
-                productoExistente.setPrecioV(p.getPrecioV());
+                p.setPrecioV(p.getPrecioV());
             }
             if (p.getFechaV() != null) {
-                productoExistente.setFechaV(p.getFechaV());
+                p.setFechaV(p.getFechaV());
             }
-            return conversionProducto.volverDto( repoProducto.save(productoExistente));
+            return conversionProducto.volverDto( repoProducto.save(p));
         } else {
             // Manejar el caso donde el producto no existe
             throw new IllegalArgumentException("El producto con id " + p.getId() + " no existe.");

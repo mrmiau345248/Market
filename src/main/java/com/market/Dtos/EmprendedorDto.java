@@ -1,8 +1,10 @@
 package com.market.Dtos;
+import com.market.Modelo.Producto;
 import jakarta.persistence.Column;
 import lombok.*;
 
 import java.sql.Date;
+import java.util.List;
 
 @Setter
 @Getter
@@ -18,5 +20,7 @@ public class EmprendedorDto  {
     private Date birth;
     private Double ingresos;
     private Double gastos;
+
+
 
 }
