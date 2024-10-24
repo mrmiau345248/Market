@@ -89,7 +89,22 @@ public EmprendedorDto modificarEmpleado(EmprendedorDto edto){
       if(optionalEmprendedor.isPresent()) {
         emprendedor=optionalEmprendedor.get();
 
-       // if( emprendedor.get)
+        if(edto.getNombre()!=null){
+            emprendedor.setNombre(edto.getNombre());
+        }
+        if (edto.getApellido()!=null){
+            emprendedor.setApellido(edto.getApellido());
+        }
+        if (edto.getCedula()!=null){
+            emprendedor.setCedula(edto.getCedula());
+        }
+        if (edto.getTelefono()!=null){
+            emprendedor.setTelefono(edto.getTelefono());
+        }
+        if (edto.getBirth()!=null){
+            emprendedor.setBirth(edto.getBirth());
+        }
+        if ()
 
 
       }
