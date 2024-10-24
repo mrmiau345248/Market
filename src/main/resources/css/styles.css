@@ -395,4 +395,151 @@ button.btn.btn-outline-success.btn-sm:hover{
   transition: color 0.3s ease;
 }
 
+/* Pagina Favoritos */
 
+
+.html-fav{
+  height: 100%;  /* Asegura que la altura de la página sea siempre del 100% */
+  margin: 0;     /* Elimina cualquier margen que pueda estar causando espacios en blanco */
+  padding: 0;
+}
+
+.title1-fav{
+  font-size:x-large;
+  margin-left: 35px;
+  display: flex;
+  justify-content: center;
+}
+
+table {
+  width: 80%;
+  margin: 20px auto;
+  border-collapse: collapse;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  background-color: #fff;
+}
+
+table, th, td {
+  border: 1px solid #ddd;
+}
+
+th, td {
+  padding: 12px 20px;
+  text-align: left;
+}
+
+th {
+  background-color: #6A8FC7;
+  color: white;
+  text-transform: uppercase;
+}
+
+tr:nth-child(even) {
+  background-color: #f2f2f2;
+}
+
+tr:hover {
+  background-color: #ddd;
+}
+
+td {
+  color: #333;
+}
+
+/* Pagina de tus productos */
+.bodyaniadir{
+  background: linear-gradient(0deg, rgb(248, 248, 248) 0%, rgba(187,236,237,1) 100%);
+}
+
+
+.title1-prod{
+  font-size:x-large;
+  display: flex;
+  justify-content: center;
+  margin-top: 15px;
+  margin-bottom: 15px;
+}
+
+/* Botón de edición */
+.edit-btn {
+  background-color: #6A8FC7;
+  color: white;
+  padding: 8px 16px;
+  border: none;
+  cursor: pointer;
+  font-size: 14px;
+  transition: background-color 0.3s ease;
+}
+
+.edit-btn:hover {
+  background-color: #bfd0e9;
+  color: #000000;
+}
+
+/* pagina aniadir Productos */
+
+/* Sección del formulario */
+.add-product-section {
+  width: 60%;
+  margin: 0 auto;
+  background-color: white;
+  padding: 20px;
+  box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 8px;
+}
+
+.add-product-form {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+/* Estilos de los campos de entrada */
+.form-group {
+  width: 48%;
+  margin-bottom: 15px;
+}
+
+.form-group-wide {
+  width: 100%;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+  font-weight: bold;
+}
+
+input[type="text"], input[type="number"], select, textarea {
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #ddd;
+  border-radius: 4px;
+  box-sizing: border-box;
+}
+
+textarea {
+  resize: none;
+}
+
+/* Botón para añadir producto */
+.form-group-button {
+  width: 100%;
+  text-align: center;
+}
+
+.add-product-btn {
+  background-color: #6A8FC7;
+  color: white;
+  padding: 12px 20px;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 16px;
+  width: 50%;
+}
+
+.add-product-btn:hover {
+  background-color: #7e95b9;
+  color: #000000;
+}
