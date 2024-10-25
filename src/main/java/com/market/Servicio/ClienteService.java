@@ -11,7 +11,7 @@ import javax.swing.text.html.Option;
 import java.util.Optional;
 
 
-@Component
+@Service
 public class ClienteService {
 
     private final conversionCliente conversionCliente;
@@ -60,7 +60,7 @@ public class ClienteService {
 
     public void eliminarCliente(ClienteDto cdto){
         Optional<Cliente> optionalCliente = repoCliente.findById(cdto.getId());
-        Cliente c= null;
+        Cliente c= new Cliente();
         if(optionalCliente.isPresent()){
             c= conversionCliente.volverCliente(cdto);
             repoCliente.delete(c);

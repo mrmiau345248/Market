@@ -104,11 +104,14 @@ public EmprendedorDto modificarEmpleado(EmprendedorDto edto){
         if (edto.getBirth()!=null){
             emprendedor.setBirth(edto.getBirth());
         }
-       // if ()
-
-
+        if (edto.getIngresos()!=null){
+            emprendedor.setIngresos(edto.getIngresos());
+        }
+        if (edto.getGastos()!=null){
+            emprendedor.setGastos(edto.getGastos());
+        }
       }
-return new EmprendedorDto();
+      return conversionEmprendedor.volverDto(repoEmprendedor.save(emprendedor));
 }
 
 
