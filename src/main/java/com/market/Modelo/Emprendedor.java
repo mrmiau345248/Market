@@ -35,15 +35,19 @@ public class Emprendedor extends Persona {
     }
 
     public double getGastos() {
-        return productos.stream()
-                .mapToDouble(Producto::getPrecioC)
-                .sum();
+      Double suma=0.0;
+      for(Producto p:this.productos){
+          suma+= p.getPrecioC();
+      }
+      return suma;
     }
 
     // Método para calcular los ingresos
     public double getIngresos() {
-        return productos.stream()
-                .mapToDouble(Producto::getPrecioV)
-                .sum();
+    Double suma=0.0;
+    for (Producto p:this.productos){
+        suma+=p.getPrecioV();
+    }
+    return suma;
     }
 }
