@@ -1,9 +1,7 @@
 package com.market.Dtos;
-
 import lombok.*;
 
-@Setter
-@Getter
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 abstract public class PersonaDto {
@@ -12,6 +10,6 @@ abstract public class PersonaDto {
     private String cedula;
     private String telefono;
     private java.sql.Date birth;
-
-
+    private String correo;
+    private String contrasena;
 }

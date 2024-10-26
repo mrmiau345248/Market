@@ -28,5 +28,8 @@ abstract public class Persona {
     private String telefono;
     @Column(name="birth")
     private Date birth;
+    private String correo="";
+    private String contrasena="";
+
 
 }

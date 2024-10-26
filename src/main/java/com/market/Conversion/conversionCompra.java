@@ -1,6 +1,4 @@
 package com.market.Conversion;
-
-
 import com.market.Dtos.*;
 import com.market.Modelo.*;
 import org.springframework.stereotype.Component;
@@ -13,7 +11,6 @@ public CompraDto volverDto(Compra compra){
             compra.getEmprendedor(),compra.getMetodoPago());
 }
 public Compra volverCompra(CompraDto compraDto){
-
     return new Compra(compraDto.getId(),compraDto.getFecha(),
             compraDto.getMonto(),compraDto.getCliente(),
             compraDto.getEmprendedor(),compraDto.getMetodoPago());

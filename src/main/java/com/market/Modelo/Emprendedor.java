@@ -26,8 +26,8 @@ public class Emprendedor extends Persona {
     private List<Compra> ventas;
 
 
-    public Emprendedor(int id, String nombre, String apellido, String cedula, String telefono, Date birth) {
-        super(id, nombre, apellido, cedula, telefono, birth);
+    public Emprendedor(int id, String nombre, String apellido, String cedula, String telefono, Date birth, String correo, String contrasena) {
+        super(id, nombre, apellido, cedula, telefono, birth, correo, contrasena);
         this.productos = new ArrayList<>();
         this.ingresos = 0.0;
         this.gastos = 0.0;

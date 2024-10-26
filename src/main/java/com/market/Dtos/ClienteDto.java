@@ -2,8 +2,7 @@ package com.market.Dtos;
 import lombok.*;
 import java.sql.Date;
 
-@Getter
-@Setter
+@Data
 @AllArgsConstructor
 @EqualsAndHashCode
 @NoArgsConstructor
@@ -14,4 +13,8 @@ public class ClienteDto {
     private String cedula;
     private String telefono;
     private Date birth;
+    private String contrasena;
+    private String correo;
+
+
 }

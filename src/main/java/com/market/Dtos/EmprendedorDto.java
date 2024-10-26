@@ -1,13 +1,9 @@
 package com.market.Dtos;
-import com.market.Modelo.Producto;
-import jakarta.persistence.Column;
 import lombok.*;
-
 import java.sql.Date;
-import java.util.List;
 
-@Setter
-@Getter
+
+@Data
 @NoArgsConstructor
 @AllArgsConstructor
 public class EmprendedorDto  {
@@ -18,9 +14,9 @@ public class EmprendedorDto  {
     private String cedula;
     private String telefono;
     private Date birth;
+    private String correo;
+    private String contrasena;
     private Double ingresos;
     private Double gastos;
-
-
 
 }

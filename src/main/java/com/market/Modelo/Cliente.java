@@ -14,8 +14,8 @@ public class Cliente extends Persona {
     @Column(name="Compras")
     private List<Compra> compras;
 
-    public Cliente(int id, String nombre, String apellido, String cedula, String telefono, Date birth) {
-        super(id, nombre, apellido, cedula, telefono, birth);
+    public Cliente(int id, String nombre, String apellido, String cedula, String telefono, Date birth,String correo,String contrasena) {
+        super(id, nombre, apellido, cedula, telefono, birth,correo,contrasena);
         this.compras = new ArrayList<>();
     }
 

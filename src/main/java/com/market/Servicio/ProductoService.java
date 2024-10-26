@@ -1,9 +1,6 @@
 package com.market.Servicio;
-
 import com.market.Conversion.*;
-import com.market.Dtos.ClienteDto;
 import com.market.Dtos.ProductoDto;
-import com.market.Modelo.Cliente;
 import com.market.Modelo.Producto;
 import com.market.Repos.RepoProducto;
 import org.springframework.beans.factory.annotation.Autowired;

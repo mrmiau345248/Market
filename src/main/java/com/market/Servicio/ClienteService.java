@@ -6,8 +6,6 @@ import com.market.Modelo.Cliente;
 import com.market.Repos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.*;
-
-import javax.swing.text.html.Option;
 import java.util.Optional;
 
 
@@ -34,7 +32,7 @@ public class ClienteService {
         if( optionalCliente.isPresent()){
              c= optionalCliente.get();
         }
-        return new ClienteDto(c.getId(),c.getNombre(),c.getApellido(),c.getCedula(),c.getTelefono(),c.getBirth());
+        return conversionCliente.volverDto(c);
     }
     public ClienteDto modificarCliente(ClienteDto cdto) {
         Cliente c = conversionCliente.volverCliente(cdto);
