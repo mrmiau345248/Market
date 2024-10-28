@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tus Productos</title>
+    <link rel="stylesheet" href="../css/styles.css">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/css/all.min.css">
+</head>
+<body class="bodyHome">
+    <header class="header">
+        <div class="header-content">
+            <div class="greeting">
+                <img src="../img/usuario.svg" alt="Foto de perfil" class="profilePic">
+                <h1 class="greeting-text">Hola Jhon, buenos días. 😋</h1>
+                <h2 class="greeting-text-2">¿Qué se te antoja hoy?</h2>
+            </div>
+            
+            <img src="../img/javeriana.svg" alt="Logo Javeriana" class="logo1">
+        </div>
+    </header>
+
+    <section class="search-nav">
+        <form class="d-flex"  role="search">
+            <input class="form-control me-2" type="search" placeholder="Comida, productos, papelería,..." aria-label="Search">
+            <button class="btn btn-outline-success btn-sm" type="submit">Buscar</button>
+        </form>
+    </section> 
+    <h1 class="title1-prod">Tus Productos</h1>
+
+    <section class="product-section">
+        <table class>
+            <thead>
+                <tr class>
+                    <th>Nombre del Producto</th>
+                    <th>Categoría</th>
+                    <th>Precio</th>
+                    <th>Acciones</th>
+                </tr>
+            </thead>
+            <tbody>
+                <!-- Productos de ejemplo -->
+                <tr class="product-row">
+                    <td class="product-name">Galletas</td>
+                    <td class="product-category">Postres</td>
+                    <td class="product-price">$3.000</td>
+                    <td class="product-actions"><button class="edit-btn" onclick="editProduct('Libreta Universitaria')">Editar</button></td>
+                </tr>
+                <tr class="product-row">
+                    <td class="product-name">Pie de limon</td>
+                    <td class="product-category">Tecnología</td>
+                    <td class="product-price">$5.000</td>
+                    <td class="product-actions"><button class="edit-btn" onclick="editProduct('Laptop HP')">Editar</button></td>
+                </tr>
+                <tr class="product-row">
+                    <td class="product-name">lasagna</td>
+                    <td class="product-category">comida</td>
+                    <td class="product-price">$12.000</td>
+                    <td class="product-actions"><button class="edit-btn" onclick="editProduct('Mochila Escolar')">Editar</button></td>
+                </tr>
+                <tr class="product-row">
+                    <td class="product-name">Bubaloo</td>
+                    <td class="product-category">dulces</td>
+                    <td class="product-price">$10.000</td>
+                    <td class="product-actions"><button class="edit-btn" onclick="editProduct('Calculadora Científica')">Editar</button></td>
+                </tr>
+            </tbody>
+        </table>
+    </section>
+    
+</body>
+</html>
