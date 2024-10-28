@@ -1,5 +1,6 @@
 package com.market.Dtos;
 import lombok.*;
+import java.util.*;
 
 @Data
 @AllArgsConstructor
@@ -7,7 +8,9 @@ import lombok.*;
 public class ProductoDto {
     private  int id;
     private String nombre;
+    private String categ;
+    private String descrip;
     private Double precioC;
     private Double precioV;
-    private java.sql.Date fechaV;
+    private Date fechaV;
 }

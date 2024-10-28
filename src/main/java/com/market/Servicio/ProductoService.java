@@ -25,7 +25,7 @@ public class ProductoService {
              p = optionalProducto.get();
         }
 
-        return new ProductoDto(p.getId(),p.getNombre(),p.getPrecioC(),p.getPrecioV(),p.getFechaV());
+        return new ProductoDto(p.getId(),p.getNombre(),p.getCateg(),p.getDescrip(), p.getPrecioC(),p.getPrecioV(),p.getFechaV());
     }
 
     public ProductoDto crearProducto( ProductoDto pdto){

@@ -1,21 +1,16 @@
 package com.market.Servicio;
-
-import com.market.Conversion.conversionCompra;
-import com.market.Dtos.CompraDto;
-import com.market.Modelo.Compra;
-import com.market.Modelo.Producto;
-import com.market.Repos.RepoCliente;
-import com.market.Repos.RepoCompra;
-import com.market.Repos.RepoProducto;
+import com.market.Conversion.*;
+import com.market.Dtos.*;
+import com.market.Modelo.*;
+import com.market.Repos.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-
-import java.util.Optional;
+import java.util.*;
 
 @Service
 public class CompraService {
-    private RepoCompra repoCompra;
-    private conversionCompra conversionCompra;
+    private final RepoCompra repoCompra;
+    private final conversionCompra conversionCompra;
 
     @Autowired
     public CompraService(RepoCompra repoCompra, conversionCompra conversionCompra) {
@@ -62,14 +57,12 @@ public CompraDto modificarCompra(CompraDto compraDto) {
 }
 
 public void deleteCompra(CompraDto compraDto) {
-        Optional<Compra> optionalCompra = repoCompra.findById(compraDto.getId());
-        if(optionalCompra.isPresent()) {
+    Optional<Compra> optionalCompra = repoCompra.findById(compraDto.getId());
+        if (optionalCompra.isPresent()) {
             Compra c = conversionCompra.volverCompra(compraDto);
             repoCompra.delete(c);
+    }
         }
-        }
-
-
 }
 
 

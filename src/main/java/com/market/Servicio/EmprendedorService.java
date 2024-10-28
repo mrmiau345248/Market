@@ -18,17 +18,19 @@ public class EmprendedorService {
     private conversionEmprendedor conversionEmprendedor;
     private RepoCompra repoCompra;
     public conversionProducto conversionProducto;
+    private conversionCompra conversionCompra;
 
 
     @Autowired
     public EmprendedorService(RepoEmprendedor repoEmprendedor, conversionEmprendedor conversionEmprendedor,
                               RepoCompra repoCompra, RepoProducto repoProducto,
-                              conversionProducto conversionProducto) {
+                              conversionProducto conversionProducto, conversionCompra conversionCompra) {
         this.repoEmprendedor = repoEmprendedor;
         this.conversionEmprendedor = conversionEmprendedor;
         this.repoCompra = repoCompra;
         this.repoProducto = repoProducto;
         this.conversionProducto = conversionProducto;
+        this.conversionCompra = conversionCompra;
     }
 
     public EmprendedorDto crearEmprendedor(EmprendedorDto edto) {
@@ -39,7 +41,7 @@ public class EmprendedorService {
 
     public EmprendedorDto traerEmprendedor(EmprendedorDto edto) {
         Optional<Emprendedor> emprendedorOptional = repoEmprendedor.findById(edto.getId());
-        Emprendedor emprendedor = null;
+        Emprendedor emprendedor = new Emprendedor();
         if(emprendedorOptional.isPresent()) {
             emprendedor=emprendedorOptional.get();
         }
@@ -64,24 +66,24 @@ public class EmprendedorService {
     }
 
 
-    //Completar implementacion Compra para terminar esta clase
-    /*
+
     public List<CompraDto> traerListaVentas(Emprendedor edto){
         Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(edto.getId());
-        Emprendedor emprendedor = null;
-        List<Producto> productos= new ArrayList<>();
-        List<ProductoDto> productosDto= new ArrayList<>();
+        Emprendedor emprendedor = new Emprendedor();
+        List<Compra> ventas= new ArrayList<>();
+        List<CompraDto> ventasDto= new ArrayList<>();
         if(optionalEmprendedor.isPresent()) {
             emprendedor = optionalEmprendedor.get();
-            productos= emprendedor.getProductos();
+            ventas= emprendedor.getVentas();
 
-            for(Producto p: productos) {
-                productosDto.add(conversionProducto.volverDto(p));
+            for(Compra c: ventas){
+                ventasDto.add(conversionCompra.volverDto(c));
+
             }
         }
-        return productosDto;
+        return ventasDto;
     }
-*/
+
 
 public EmprendedorDto modificarEmpleado(EmprendedorDto edto){
       Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(edto.getId());
