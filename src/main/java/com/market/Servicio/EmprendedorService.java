@@ -39,8 +39,8 @@ public class EmprendedorService {
     }
 
 
-    public EmprendedorDto traerEmprendedor(EmprendedorDto edto) {
-        Optional<Emprendedor> emprendedorOptional = repoEmprendedor.findById(edto.getId());
+    public EmprendedorDto traerEmprendedor(int id) {
+        Optional<Emprendedor> emprendedorOptional = repoEmprendedor.findById(id);
         Emprendedor emprendedor = new Emprendedor();
         if(emprendedorOptional.isPresent()) {
             emprendedor=emprendedorOptional.get();
@@ -49,10 +49,10 @@ public class EmprendedorService {
     }
 
 
-    public List<ProductoDto> traerListaProductos(Emprendedor edto){
-        Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(edto.getId());
-        Emprendedor emprendedor = null;
-        List<Producto> productos= new ArrayList<>();
+    public List<ProductoDto> traerListaProductos(int id){
+        Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(id);
+        Emprendedor emprendedor ;
+        List<Producto> productos;
         List<ProductoDto> productosDto= new ArrayList<>();
         if(optionalEmprendedor.isPresent()) {
             emprendedor = optionalEmprendedor.get();
@@ -67,10 +67,10 @@ public class EmprendedorService {
 
 
 
-    public List<CompraDto> traerListaVentas(Emprendedor edto){
-        Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(edto.getId());
-        Emprendedor emprendedor = new Emprendedor();
-        List<Compra> ventas= new ArrayList<>();
+    public List<CompraDto> traerListaVentas(int id){
+        Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(id);
+        Emprendedor emprendedor ;
+        List<Compra> ventas;
         List<CompraDto> ventasDto= new ArrayList<>();
         if(optionalEmprendedor.isPresent()) {
             emprendedor = optionalEmprendedor.get();
@@ -85,12 +85,11 @@ public class EmprendedorService {
     }
 
 
-public EmprendedorDto modificarEmpleado(EmprendedorDto edto){
-      Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(edto.getId());
-      Emprendedor emprendedor = null;
+public EmprendedorDto modificarEmpleado(int id, EmprendedorDto edto){
+      Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(id);
+      Emprendedor emprendedor= new Emprendedor();
       if(optionalEmprendedor.isPresent()) {
         emprendedor=optionalEmprendedor.get();
-
         if(edto.getNombre()!=null){
             emprendedor.setNombre(edto.getNombre());
         }
@@ -106,6 +105,12 @@ public EmprendedorDto modificarEmpleado(EmprendedorDto edto){
         if (edto.getBirth()!=null){
             emprendedor.setBirth(edto.getBirth());
         }
+        if(edto.getContrasena()!=null){
+            emprendedor.setContrasena(edto.getContrasena());
+        }
+        if (edto.getCorreo()!=null){
+            emprendedor.setCorreo(edto.getCorreo());
+        }
         if (edto.getIngresos()!=null){
             emprendedor.setIngresos(edto.getIngresos());
         }
@@ -116,7 +121,15 @@ public EmprendedorDto modificarEmpleado(EmprendedorDto edto){
       return conversionEmprendedor.volverDto(repoEmprendedor.save(emprendedor));
 }
 
-
+    public EmprendedorDto eliminarEmprendedor(int id){
+        Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(id);
+        Emprendedor e;
+        if(optionalEmprendedor.isPresent()){
+            e = optionalEmprendedor.get();
+            repoEmprendedor.delete(e);
+        }
+        return new EmprendedorDto();
+    }
 
 
 

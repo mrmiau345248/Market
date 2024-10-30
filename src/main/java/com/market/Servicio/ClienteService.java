@@ -29,17 +29,17 @@ public class ClienteService {
         return conversionCliente.volverDto(repoCliente.save(c));
     }
 
-    public ClienteDto traerCliente(ClienteDto cdto){
-        Optional<Cliente> optionalCliente = repoCliente.findById(cdto.getId());
+    public ClienteDto traerCliente(int id){
+        Optional<Cliente> optionalCliente = repoCliente.findById(id);
         Cliente c = new Cliente();
         if( optionalCliente.isPresent()){
              c= optionalCliente.get();
         }
         return conversionCliente.volverDto(c);
     }
-    public ClienteDto modificarCliente(ClienteDto cdto) {
+    public ClienteDto modificarCliente(int id, ClienteDto cdto) {
         Cliente c = conversionCliente.volverCliente(cdto);
-        Optional<Cliente> optionalCliente = repoCliente.findById(c.getId());
+        Optional<Cliente> optionalCliente = repoCliente.findById(id);
         Cliente c1= new Cliente();
 
         if (optionalCliente.isPresent()) {
@@ -59,16 +59,17 @@ public class ClienteService {
     return conversionCliente.volverDto(repoCliente.save(c1));
     }
 
-    public void eliminarCliente(ClienteDto cdto){
-        Optional<Cliente> optionalCliente = repoCliente.findById(cdto.getId());
+    public ClienteDto eliminarCliente(int id){
+        Optional<Cliente> optionalCliente = repoCliente.findById(id);
         Cliente c;
         if(optionalCliente.isPresent()){
-            c= conversionCliente.volverCliente(cdto);
+            c= optionalCliente.get();
             repoCliente.delete(c);
         }
+        return new ClienteDto();
     }
-    public List<CompraDto> traerCompras(ClienteDto cdto){
-        Optional<Cliente> optionalCliente = repoCliente.findById(cdto.getId());
+    public List<CompraDto> traerCompras(int id){
+        Optional<Cliente> optionalCliente = repoCliente.findById(id);
         Cliente c;
         List<Compra> compras ;
         List<CompraDto> comprasDto = new ArrayList<>();

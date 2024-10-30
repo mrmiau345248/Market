@@ -20,37 +20,40 @@ public class ProductoService {
 
     public ProductoDto traerProducto(int id){
         Optional<Producto> optionalProducto= repoProducto.findById(id);
-        Producto p= null;
+        Producto p = new Producto();
         if(optionalProducto.isPresent()) {
              p = optionalProducto.get();
         }
 
-        return new ProductoDto(p.getId(),p.getNombre(),p.getCateg(),p.getDescrip(), p.getPrecioC(),p.getPrecioV(),p.getFechaV());
+        return conversionProducto.volverDto(p);
     }
 
     public ProductoDto crearProducto( ProductoDto pdto){
         Producto p= conversionProducto.volverEntidad(pdto);
         return conversionProducto.volverDto( repoProducto.save(p));
     }
-    public void eliminarProducto(ProductoDto pdto){
-        Optional<Producto> optionalProducto = repoProducto.findById(pdto.getId());
-        Producto p= null;
+    public ProductoDto eliminarProducto(int id){
+        Optional<Producto> optionalProducto = repoProducto.findById(id);
+        Producto p;
         if(optionalProducto.isPresent()){
-            p= conversionProducto.volverEntidad(pdto);
+           p= optionalProducto.get();
             repoProducto.delete(p);
         }
+        return new ProductoDto();
     }
-    public ProductoDto modificarProducto( ProductoDto pdto){
-        // Buscar el producto existente en la base de datos
-        Optional<Producto> optionalProducto = repoProducto.findById(pdto.getId());
+    public ProductoDto modificarProducto( int id, ProductoDto pdto){
+        Optional<Producto> optionalProducto = repoProducto.findById(id);
         Producto productoFinal;
-//        Producto p = new Producto();
         if (optionalProducto.isPresent()) {
             productoFinal= optionalProducto.get();
-            // Obtener el producto existente
-            // Verificar y actualizar solo los campos que no sean nulos
             if (pdto.getNombre() != null) {
                 productoFinal.setNombre(pdto.getNombre());
+            }
+            if (pdto.getCateg()!=null){
+                productoFinal.setCateg(pdto.getCateg());
+            }
+            if (pdto.getDescrip()!=null){
+                productoFinal.setDescrip(pdto.getDescrip());
             }
             if (pdto.getPrecioC() != null) {
                 productoFinal.setPrecioC(pdto.getPrecioC());
@@ -64,7 +67,7 @@ public class ProductoService {
             return conversionProducto.volverDto( repoProducto.save(productoFinal));
         } else {
             // Manejar el caso donde el producto no existe
-            throw new IllegalArgumentException("El producto con id " + pdto.getId() + " no existe.");
+            throw new IllegalArgumentException("El producto con id " +id + " no existe.");
         }
     }
 

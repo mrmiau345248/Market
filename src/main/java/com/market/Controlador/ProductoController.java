@@ -1,7 +1,5 @@
 package com.market.Controlador;
-import com.market.Conversion.*;
 import com.market.Dtos.*;
-import com.market.Repos.*;
 import com.market.Servicio.*;
 import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
@@ -11,13 +9,10 @@ import org.springframework.web.bind.annotation.*;
 @RequestMapping("api/Marketplace/producto")
 public class ProductoController {
     private final ProductoService productoService;
-    private final RepoProducto repoProducto ;
-    private final conversionProducto conversionProducto;
+
     @Autowired
-    public ProductoController(ProductoService productoService, RepoProducto repoProducto, conversionProducto conversionProducto) {
+    public ProductoController(ProductoService productoService) {
         this.productoService = productoService;
-        this.repoProducto = repoProducto;
-        this.conversionProducto = conversionProducto;
     }
 
     @PostMapping("/crear")
@@ -33,13 +28,17 @@ public class ProductoController {
                 .body(producto);
     }
     @PutMapping("/modificar/{id}")
-    public ResponseEntity<ProductoDto> modificarProducto(@PathVariable int id) {
-        System.out.println("Holaaaaaaaaa" );
-        ProductoDto nuevoProducto = productoService.traerProducto(id);
+    public ResponseEntity<ProductoDto> modificarProducto(@PathVariable int id,@RequestBody ProductoDto productoDto) {
+        ProductoDto nuevoProducto =  productoService.modificarProducto(id, productoDto);
         if (nuevoProducto != null) {
-            return ResponseEntity.ok(nuevoProducto); // 200 OK
+            return ResponseEntity.status(HttpStatus.OK).body(nuevoProducto);
         } else {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).build(); // 404 Not Found
         }
+    }
+    @DeleteMapping("/eliminar/{id}")
+    public ResponseEntity<ProductoDto> eliminarProducto(@PathVariable int id){
+        ProductoDto nuevoProducto = productoService.eliminarProducto(id);
+        return ResponseEntity.status(HttpStatus.OK).body(nuevoProducto);
     }
 }

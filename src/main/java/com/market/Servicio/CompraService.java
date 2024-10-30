@@ -22,8 +22,8 @@ public CompraDto crearCompra(CompraDto compraDto) {
    Compra c= conversionCompra.volverCompra(compraDto);
     return conversionCompra.volverDto(repoCompra.save(c));
 }
-public CompraDto traerCompra(CompraDto compraDto) {
-        Optional<Compra> optionalCompra= repoCompra.findById(compraDto.getId());
+public CompraDto traerCompra(int id) {
+        Optional<Compra> optionalCompra= repoCompra.findById(id);
         Compra c = new Compra();
         if(optionalCompra.isPresent()) {
              c= optionalCompra.get();
@@ -31,8 +31,8 @@ public CompraDto traerCompra(CompraDto compraDto) {
     return conversionCompra.volverDto(c);
     }
 
-public CompraDto modificarCompra(CompraDto compraDto) {
-        Optional<Compra> optionalCompra = repoCompra.findById(compraDto.getId());
+public CompraDto modificarCompra(int id, CompraDto compraDto) {
+        Optional<Compra> optionalCompra = repoCompra.findById(id);
         Compra cFinal= new Compra();
         if(optionalCompra.isPresent()) {
             cFinal= optionalCompra.get();
@@ -56,12 +56,14 @@ public CompraDto modificarCompra(CompraDto compraDto) {
         return conversionCompra.volverDto(repoCompra.save(cFinal));
 }
 
-public void deleteCompra(CompraDto compraDto) {
-    Optional<Compra> optionalCompra = repoCompra.findById(compraDto.getId());
+public CompraDto deleteCompra(int id) {
+    Optional<Compra> optionalCompra = repoCompra.findById(id);
+        Compra c;
         if (optionalCompra.isPresent()) {
-            Compra c = conversionCompra.volverCompra(compraDto);
+            c = optionalCompra.get();
             repoCompra.delete(c);
     }
+    return  new CompraDto();
         }
 }
 

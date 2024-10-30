@@ -1,6 +1,6 @@
 package com.market.Dtos;
 import lombok.*;
-import java.sql.Date;
+import java.util.Date;
 
 @Data
 @AllArgsConstructor

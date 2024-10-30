@@ -1,11 +1,6 @@
 package com.market.Modelo;
-
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
-import com.market.Modelo.*;
 import jakarta.persistence.*;
 import lombok.*;
-
-import java.sql.Date;
 import java.util.*;
 
 @Setter

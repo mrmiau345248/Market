@@ -1,5 +1,6 @@
 package com.market.Dtos;
 import lombok.*;
+import java.util.Date;
 
 @Data
 @NoArgsConstructor
@@ -9,7 +10,7 @@ abstract public class PersonaDto {
     private String apellido;
     private String cedula;
     private String telefono;
-    private java.sql.Date birth;
+    private Date birth;
     private String correo;
     private String contrasena;
 }

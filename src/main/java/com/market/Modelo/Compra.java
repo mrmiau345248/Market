@@ -7,49 +7,42 @@ import java.util.*;
 @Setter
 @NoArgsConstructor
 @Table(name="compra")
+@Getter
 public class Compra {
-    @Getter
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private int id;
 
-    @Getter
     @Column(name="fecha")
     private Date fecha;
 
     @Column(name="monto")
     private Double monto;
 
-    @Getter
-    @ManyToOne
-    @JoinColumn(name = "cliente")
-    private Cliente cliente;
+    @Column(name = "cliente")
+    private int idCliente;
 
-    @Getter
-    @ManyToOne
-    @JoinColumn(name = "emprendedor")
-    private Emprendedor emprendedor;
+   @Column(name = "emprendedor")
+    private int idEmprendedor;
 
-    @Getter
     @OneToMany(cascade = CascadeType.ALL, fetch = FetchType.LAZY) // Relación con Producto
     @Column(name="productos")
     private List<Producto> productosC;
 
-    @Getter
     @Column(name="metodoPago")
     private String metodoPago;
 
-    public Compra(int id, Date fecha, Double monto, Cliente cliente, Emprendedor emprendedor,  String metodoPago) {
+    public Compra(int id, Date fecha,  int idCliente, int idEmprendedor,  String metodoPago) {
         this.id = id;
         this.fecha = fecha;
-        this.monto = 0.0;
-        this.cliente = cliente;
-        this.emprendedor = emprendedor;
+        this.monto = calcularMonto();
+        this.idCliente = idCliente;
+        this.idEmprendedor = idEmprendedor;
         this.productosC = new ArrayList<>();
         this.metodoPago = metodoPago;
     }
 
-    public double getMonto() {
+    public double calcularMonto() {
         double monto = 0;
         for (Producto p : this.productosC) {
             monto += p.getPrecioV();
