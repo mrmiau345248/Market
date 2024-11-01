@@ -40,4 +40,5 @@ public class EmprendedorController {
         EmprendedorDto nuevoEmprendedor = emprendedorService.eliminarEmprendedor(id);
         return ResponseEntity.status(HttpStatus.OK).body(nuevoEmprendedor);
     }
+
 }

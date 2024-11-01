@@ -35,7 +35,7 @@ public class Compra {
     public Compra(int id, Date fecha,  int idCliente, int idEmprendedor,  String metodoPago) {
         this.id = id;
         this.fecha = fecha;
-        this.monto = calcularMonto();
+        this.monto = 0.0;
         this.idCliente = idCliente;
         this.idEmprendedor = idEmprendedor;
         this.productosC = new ArrayList<>();

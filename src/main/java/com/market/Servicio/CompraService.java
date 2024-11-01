@@ -39,14 +39,11 @@ public CompraDto modificarCompra(int id, CompraDto compraDto) {
             if(compraDto.getFecha()!=null){
                 cFinal.setFecha(compraDto.getFecha());
             }
-            if(compraDto.getMonto()!=null){
-               cFinal.setMonto(compraDto.getMonto());
+            if(compraDto.getIdCliente()!=0){
+                cFinal.setIdCliente(compraDto.getIdCliente());
             }
-            if(compraDto.getCliente()!=null){
-                cFinal.setCliente(compraDto.getCliente());
-            }
-            if (compraDto.getEmprendedor()!=null){
-                cFinal.setEmprendedor(compraDto.getEmprendedor());
+            if (compraDto.getIdEmprendedor()!=0){
+                cFinal.setIdEmprendedor(compraDto.getIdEmprendedor());
             }
             if (compraDto.getMetodoPago()!=null){
                 cFinal.setMetodoPago(compraDto.getMetodoPago());

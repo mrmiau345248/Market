@@ -2,7 +2,6 @@ package com.market.Modelo;
 
 import jakarta.persistence.*;
 import lombok.*;
-import java.sql.Date;
 import java.util.*;
 @Getter
 @Setter
@@ -14,7 +13,10 @@ public class Cliente extends Persona {
     @Column(name="Compras")
     private List<Compra> compras;
 
-    public Cliente(int id, String nombre, String apellido, String cedula, String telefono, Date birth,String correo,String contrasena) {
+    public Cliente(int id, String nombre,
+                   String apellido, String cedula,
+                   String telefono, Date birth,
+                   String correo,String contrasena) {
         super(id, nombre, apellido, cedula, telefono, birth,correo,contrasena);
         this.compras = new ArrayList<>();
     }

@@ -8,7 +8,7 @@ import java.util.Date;
 public class CompraDto {
     private int id;
     private Date fecha;
-    private Double monto;
+//    private Double monto;
     private int idCliente;
     private int idEmprendedor;
     private String metodoPago;

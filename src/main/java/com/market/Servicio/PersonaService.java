@@ -1,8 +1,8 @@
 package com.market.Servicio;
+import org.springframework.stereotype.*;
 
-import org.springframework.stereotype.Component;
-
-@Component
+@Service
 public class PersonaService {
+
 
 }

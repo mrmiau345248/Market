@@ -14,24 +14,27 @@ import java.util.Optional;
 public class EmprendedorService {
 
     private final RepoProducto repoProducto;
-    private RepoEmprendedor repoEmprendedor;
-    private conversionEmprendedor conversionEmprendedor;
-    private RepoCompra repoCompra;
-    public conversionProducto conversionProducto;
-    private conversionCompra conversionCompra;
-
-
+    private final RepoEmprendedor repoEmprendedor;
+    private final conversionEmprendedor conversionEmprendedor;
+    private final RepoCompra repoCompra;
+    public final conversionProducto conversionProducto;
+    private final conversionCompra conversionCompra;
+    private final AutenticacionService autenticacionService;
     @Autowired
-    public EmprendedorService(RepoEmprendedor repoEmprendedor, conversionEmprendedor conversionEmprendedor,
-                              RepoCompra repoCompra, RepoProducto repoProducto,
-                              conversionProducto conversionProducto, conversionCompra conversionCompra) {
+    public EmprendedorService(RepoProducto repoProducto, RepoEmprendedor repoEmprendedor,
+                              conversionEmprendedor conversionEmprendedor, RepoCompra repoCompra,
+                              conversionProducto conversionProducto, conversionCompra conversionCompra,
+                              AutenticacionService autenticacionService) {
+        this.repoProducto = repoProducto;
         this.repoEmprendedor = repoEmprendedor;
         this.conversionEmprendedor = conversionEmprendedor;
         this.repoCompra = repoCompra;
-        this.repoProducto = repoProducto;
         this.conversionProducto = conversionProducto;
         this.conversionCompra = conversionCompra;
+        this.autenticacionService= autenticacionService;
     }
+
+
 
     public EmprendedorDto crearEmprendedor(EmprendedorDto edto) {
         Emprendedor emprendedor = conversionEmprendedor.volverEmprendedor(edto) ;
