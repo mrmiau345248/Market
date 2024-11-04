@@ -1,0 +1,43 @@
+<!DOCTYPE html class="htmlTipoUsuario">
+<html lang="es">
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Tipo de Usuario</title>
+    <link rel="stylesheet" href="../css/styles.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.6.0/css/all.min.css" />
+</head>
+
+<body>
+    <div class="divLogoLogin">
+        <img src="../img/javeriana.svg" alt="" class="logoJaveLogin">
+    </div>
+    <div>
+        <h1 class="tituloLog">MARKETPLACE</h1>
+        <h4 class="tituloTipo">¿Qué tipo de usuario eres?</h4>
+    </div>
+     
+    <!-- Contenedor de los botones de opciones -->
+    <div class="button-container">
+        <button onclick="selectUserType('emprendedor')" class="option-button emprendedor">
+            <img src="../img/emprendedor.jpg" alt="Emprendedor" />
+            <span>Emprendedor</span>
+        </button>
+
+        <button onclick="selectUserType('usuario')" class="option-button usuario-comun">
+            <img src="../img/usuariosComun.jpg" alt="Cliente" />
+            <span>Usuario Común</span>
+        </button>
+    </div>
+
+    <script>
+        function selectUserType(type) {
+            // Guardar el tipo de usuario en localStorage
+            localStorage.setItem('userType', type);
+
+            // Redirigir a login.html
+            window.location.href = '../templates/login.html';
+        }
+    </script>
+</body>
+</html>

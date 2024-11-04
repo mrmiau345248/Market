@@ -157,15 +157,14 @@ form .signup-link a:hover {
   border: 1px solid lightgrey;
   font-size: 10px;
   transition: all 0.3s ease;
+  padding: 10px;
 }
 
 .wrapperRegister form .form-row .fa-user{
   padding-left: 4px;
 }
 
-.wrapperRegister form .form-row .fa-lock{
-  padding-left: 65px;
-}
+
 
 .wrapperRegister form .submit-row{
   display: flex;
@@ -542,4 +541,68 @@ textarea {
 .add-product-btn:hover {
   background-color: #7e95b9;
   color: #000000;
+}
+
+/* estilos para la pagina escoger usuarios */
+
+/* Estilos para los contenedores de opciones de botones */
+.button-container {
+  margin-top: 50px;
+  display: flex;
+  gap: 50px;
+  justify-content: center;
+  margin-bottom: 30px;
+}
+
+/* Estilos generales de los botones de opción */
+.option-button {
+  width: 400px;
+  height: 350px;
+  background: #fff;
+  color: #4e78c7;
+  border-radius: 10px;
+  box-shadow: 0px 4px 10px 1px rgba(0, 0, 0, 0.1);
+  text-align: center;
+  text-decoration: none;
+  font-size: 1.2em;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 15px;
+  transition: transform 0.3s ease;
+}
+
+/* Efecto al pasar el cursor sobre los botones */
+.option-button:hover {
+  transform: scale(1.05);
+  box-shadow: 0px 4px 15px 3px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos para la imagen dentro de los botones */
+.option-button img {
+  width: 100%;
+  height: auto;
+  margin-bottom: 15px;
+  border-radius: 5px;
+}
+
+/* Estilos específicos para el botón de Emprendedor */
+.option-button.emprendedor {
+  background-color: #fff;
+  color: #4e78c7;
+}
+
+/* Estilos específicos para el botón de Usuario Común */
+.option-button.usuario-comun {
+  background-color: #fff;
+  color: #4e78c7;
+}
+
+.bodyTipoUsuario{
+  height: 100%;  /* Asegura que la altura de la página sea siempre del 100% */
+  margin: 0;     /* Elimina cualquier margen que pueda estar causando espacios en blanco */
+  padding: 0;
+}
+.tituloTipo{
+  justify-self: center;
 }

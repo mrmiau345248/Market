@@ -21,12 +21,6 @@
         </div>
     </header>
 
-    <section class="search-nav">
-        <form class="d-flex"  role="search">
-            <input class="form-control me-2" type="search" placeholder="Comida, productos, papelería,..." aria-label="Search">
-            <button class="btn btn-outline-success btn-sm" type="submit">Buscar</button>
-        </form>
-    </section> 
 
     <h1 class="title1-fav">Tus Favoritos</h1>
     <table id="userTable" border="1">
@@ -35,6 +29,7 @@
                 <th>nombre</th>
                 <th>Categoria</th>
                 <th>Precio</th>
+                <th>Volver a Comprar</th>
             </tr>
         </thead>
         <tbody>
@@ -44,21 +39,25 @@
                 <td>Cupcakes</td>
                 <td>Postres</td>
                 <td>6.000</td>
+                <td><button class="edit-btn" onclick="comProduct()">Comprar</button></td>
             </tr>
             <tr>
                 <td>Donuts</td>
                 <td>Postres</td>
                 <td>4.500</td>
+                <td><button class="edit-btn" onclick="comProduct()">Comprar</button></td>
             </tr>
             <tr>
                 <td>Bom bom bun</td>
                 <td>Dulces</td>
                 <td>2.000</td>
+                <td><button class="edit-btn" onclick="comProduct()">Comprar</button></td>
             </tr>
             <tr>
                 <td>Sandwich</td>
                 <td>Comida</td>
                 <td>7.000</td>
+                <td><button class="edit-btn" onclick="comProduct()">Comprar</button></td>
             </tr>
         </tbody>
     </table>

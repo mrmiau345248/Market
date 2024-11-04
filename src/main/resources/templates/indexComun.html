@@ -31,14 +31,8 @@
     <section class="most-searched">
         <h2 class="section-title">Personaliza tu market</h2>
         <div class="buttons">
-            <a href="../templates/productos.html">
-                <button class="button-item">Mis Productos</button>
-            </a>
             <a href="../templates/favoritos.html">
                 <button class="button-item">Tus favoritos</button>
-            </a>
-            <a href="../templates/aniadirProductos.html">
-                <button class="button-item">Añadir Productos</button>
             </a>
         </div>
     </section>
@@ -117,20 +111,7 @@
             </div>
         </div>
     </section>
-    <script>
-        function toggleFavorite(element) {
-            // Alterna entre el corazón vacío (far) y el corazón lleno (fas)
-            let heartIcon = element.querySelector('i');
-            
-            if (heartIcon.classList.contains('far')) {
-                heartIcon.classList.remove('far'); // Corazón vacío
-                heartIcon.classList.add('fas');    // Corazón lleno
-            } else {
-                heartIcon.classList.remove('fas'); // Corazón lleno
-                heartIcon.classList.add('far');    // Corazón vacío
-            }
-        }
-    </script>
+    
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
 </body>
 </html>
