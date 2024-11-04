@@ -1,5 +1,4 @@
 package com.market.Modelo;
-
 import jakarta.persistence.*;
 import lombok.*;
 import java.util.*;

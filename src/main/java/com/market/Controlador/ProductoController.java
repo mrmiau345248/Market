@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.*;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.*;
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("api/Marketplace/producto")
 public class ProductoController {
@@ -40,5 +42,10 @@ public class ProductoController {
     public ResponseEntity<ProductoDto> eliminarProducto(@PathVariable int id){
         ProductoDto nuevoProducto = productoService.eliminarProducto(id);
         return ResponseEntity.status(HttpStatus.OK).body(nuevoProducto);
+    }
+    @GetMapping("/listar")
+    public ResponseEntity<List<ProductoDto>> listarProducto() {
+        List<ProductoDto> listadoDto = productoService.listarProducto();
+        return ResponseEntity.status(HttpStatus.OK).body(listadoDto);
     }
 }

@@ -62,6 +62,15 @@ public CompraDto deleteCompra(int id) {
     }
     return  new CompraDto();
         }
+
+public List<CompraDto> listarCompra(){
+    List<Compra> lista = repoCompra.findAll();
+    List<CompraDto> listaDto = new ArrayList<>();
+    for( Compra c : lista){
+        listaDto.add(conversionCompra.volverDto(c));
+    }
+    return listaDto;
+    }
 }
 
 

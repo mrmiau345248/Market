@@ -4,6 +4,9 @@ import com.market.Servicio.EmprendedorService;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("api/Marketplace/emprendedor")
 
@@ -39,6 +42,11 @@ public class EmprendedorController {
     public ResponseEntity<EmprendedorDto> eliminarEmprendedor(@PathVariable int id){
         EmprendedorDto nuevoEmprendedor = emprendedorService.eliminarEmprendedor(id);
         return ResponseEntity.status(HttpStatus.OK).body(nuevoEmprendedor);
+    }
+    @GetMapping("/listar")
+    public ResponseEntity<List<EmprendedorDto>> listarEmprendedor(){
+        List<EmprendedorDto> listaDto = emprendedorService.listarEmprendedor();
+        return ResponseEntity.status(HttpStatus.OK).body(listaDto);
     }
 
 }

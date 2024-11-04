@@ -3,11 +3,10 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.*;
 
+@Data
 @Entity
-@Setter
 @NoArgsConstructor
 @Table(name="compra")
-@Getter
 public class Compra {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
@@ -43,7 +42,7 @@ public class Compra {
     }
 
     public double calcularMonto() {
-        double monto = 0;
+        double monto = 0.0;
         for (Producto p : this.productosC) {
             monto += p.getPrecioV();
         }

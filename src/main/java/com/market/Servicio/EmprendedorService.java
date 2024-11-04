@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.market.Modelo.*;
 import com.market.Conversion.*;
+import org.springframework.web.bind.annotation.GetMapping;
+
 import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
@@ -135,7 +137,15 @@ public EmprendedorDto modificarEmpleado(int id, EmprendedorDto edto){
     }
 
 
+    public List<EmprendedorDto> listarEmprendedor(){
+        List<Emprendedor> lista= repoEmprendedor.findAll();
+        List<EmprendedorDto> listadto = new ArrayList<>();
+        for( Emprendedor e: lista){
+            listadto.add(conversionEmprendedor.volverDto(e));
 
+        }
+        return listadto;
+    }
 
 
 
