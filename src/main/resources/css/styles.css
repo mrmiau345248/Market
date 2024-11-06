@@ -620,3 +620,8 @@ textarea {
 .card-details {
   display: none; /* Ocultar los detalles de la tarjeta por defecto */
 }
+
+.formularioPagos{
+  justify-items: center;
+}
+
