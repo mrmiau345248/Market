@@ -24,9 +24,9 @@
     <h1 class="title1-prod">Algunos productos de la jave!</h1>
 
     <section class="product-section">
-        <table class>
+        <table class="table">
             <thead>
-                <tr class>
+                <tr>
                     <th>Nombre del Producto</th>
                     <th>Categoría</th>
                     <th>Precio</th>
@@ -39,29 +39,73 @@
                     <td class="product-name">Uniforme Taekwondo</td>
                     <td class="product-category">Uniformes</td>
                     <td class="product-price">$90.000</td>
-                    <td class="product-actions"><button class="edit-btn" onclick="comProduct('Libreta Universitaria')">Comprar</button></td>
+                    <td class="product-actions"><button class="edit-btn" onclick="comProduct('Uniforme Taekwondo')">Comprar</button></td>
                 </tr>
                 <tr class="product-row">
                     <td class="product-name">Uniforme Cheroke</td>
                     <td class="product-category">Uniformes</td>
                     <td class="product-price">$150.000</td>
-                    <td class="product-actions"><button class="edit-btn" onclick="comProduct('Laptop HP')">Comprar</button></td>
+                    <td class="product-actions"><button class="edit-btn" onclick="comProduct('Uniforme Cheroke')">Comprar</button></td>
                 </tr>
                 <tr class="product-row">
                     <td class="product-name">Camiseta Colombia</td>
                     <td class="product-category">Ropa</td>
                     <td class="product-price">$42.000</td>
-                    <td class="product-actions"><button class="edit-btn" onclick="comProduct('Mochila Escolar')">Comprar</button></td>
+                    <td class="product-actions"><button class="edit-btn" onclick="comProduct('Camiseta Colombia')">Comprar</button></td>
                 </tr>
                 <tr class="product-row">
                     <td class="product-name">Sacos Levis</td>
                     <td class="product-category">Ropa</td>
                     <td class="product-price">$100.000</td>
-                    <td class="product-actions"><button class="edit-btn" onclick="comProduct('Calculadora Científica')">Comprar</button></td>
+                    <td class="product-actions"><button class="edit-btn" onclick="comProduct('Sacos Levis')">Comprar</button></td>
                 </tr>
             </tbody>
         </table>
     </section>
-    
+
+    <!-- Submenu de compra -->
+    <div class="submenu" id="purchaseForm">
+        <h3>Detalles de la compra</h3>
+        <form id="purchaseDetails">
+            <div class="mb-3">
+                <label for="quantity" class="form-label">Cantidad</label>
+                <input type="number" class="form-control" id="quantity" placeholder="Cantidad de productos" required>
+            </div>
+            <div class="mb-3">
+                <label for="description" class="form-label">Descripción</label>
+                <input type="text" class="form-control" id="description" disabled>
+            </div>
+            <div class="mb-3">
+                <label for="paymentMethod" class="form-label">Método de Pago</label>
+                <select class="form-select" id="paymentMethod" required>
+                    <option value="">Selecciona un método</option>
+                    <option value="tarjeta">Tarjeta de Crédito</option>
+                    <option value="efectivo">Efectivo</option>
+                    <option value="paypal">PayPal</option>
+                </select>
+            </div>
+            <button type="submit" class="btn btn-primary" onclick="procesarPago()">Confirmar Compra</button>
+        </form>
+    </div>
+
+    <script>
+        function procesarPago() {
+            // Redirigir a login.html
+            window.location.href = '../templates/procesarPago.html';
+        }
+
+       function comProduct(productName) {
+            // Obtener el submenú
+            var purchaseForm = document.getElementById("purchaseForm");
+
+            // Alternar la visibilidad del submenú
+            if (purchaseForm.style.display === "block") {
+                purchaseForm.style.display = "none";  // Ocultar
+            } else {
+                purchaseForm.style.display = "block";  // Mostrar
+                document.getElementById("description").value = productName;  // Actualizar la descripción
+            }
+        }
+    </script>
 </body>
 </html>

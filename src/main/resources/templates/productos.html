@@ -63,5 +63,40 @@
         </table>
     </section>
     
+     <!-- Submenu de compra -->
+     <div class="submenu" id="purchaseForm">
+        <h3>Detalles de la compra</h3>
+        <form id="purchaseDetails">
+            <div class="mb-3">
+                <label for="nombre" class="form-label">Nombre</label>
+                <input type="text" class="form-control" id="nombre" placeholder="nombre del producto" required>
+            </div>
+            <div class="mb-3">
+                <label for="Categoria" class="form-label">Categoría</label>
+                <input type="text" class="form-control" id="Categoria" placeholder="Categoría" required>
+            </div>
+            <div class="mb-3">
+                <label for="Precio" class="form-label">Precio</label>
+                <input type="text" aclass="form-control" id="Categoria" placeholder="Precio" required>
+            </div>
+            <button type="submit" class="btn btn-primary">Confirmar</button>
+        </form>
+    </div>
+
+    <script>
+       function editProduct(productName) {
+            // Obtener el submenú
+            var purchaseForm = document.getElementById("purchaseForm");
+
+            // Alternar la visibilidad del submenú
+            if (purchaseForm.style.display === "block") {
+                purchaseForm.style.display = "none";  // Ocultar
+            } else {
+                purchaseForm.style.display = "block";  // Mostrar
+                document.getElementById("description").value = productName;  // Actualizar la descripción
+            }
+        }
+    </script>
+
 </body>
 </html>

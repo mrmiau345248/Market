@@ -606,3 +606,17 @@ textarea {
 .tituloTipo{
   justify-self: center;
 }
+
+.submenu {
+  display: none;
+  margin-top: 10px;
+  border: 1px solid #ccc;
+  padding: 15px;
+  background-color: #f9f9f9;
+  width: 40%;
+  justify-self: center;
+}
+
+.card-details {
+  display: none; /* Ocultar los detalles de la tarjeta por defecto */
+}
