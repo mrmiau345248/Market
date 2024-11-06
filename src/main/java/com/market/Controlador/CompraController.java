@@ -1,5 +1,6 @@
 package com.market.Controlador;
 import com.market.Dtos.CompraDto;
+import com.market.Modelo.Compra;
 import com.market.Servicio.CompraService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -50,4 +51,5 @@ public class CompraController {
         List<CompraDto> listarDto= compraService.listarCompra();
         return  ResponseEntity.status(HttpStatus.OK).body(listarDto);
     }
+
 }

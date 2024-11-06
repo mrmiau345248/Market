@@ -1,5 +1,8 @@
 package com.market.Controlador;
+import com.market.Conversion.conversionCompra;
 import com.market.Dtos.ClienteDto;
+import com.market.Dtos.CompraDto;
+import com.market.Dtos.ProductoDto;
 import com.market.Servicio.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
@@ -12,11 +15,15 @@ import java.util.List;
 @RequestMapping("api/Marketplace/cliente")
 
 public class ClienteController {
+    private final conversionCompra conversionCompra;
     private final ClienteService clienteService;
     @Autowired
-    public ClienteController(ClienteService clienteService) {
+
+    public ClienteController(com.market.Conversion.conversionCompra conversionCompra, ClienteService clienteService) {
+        this.conversionCompra = conversionCompra;
         this.clienteService = clienteService;
     }
+
 
     @PostMapping("/crear")
     public ResponseEntity<ClienteDto> crearCliente(@RequestBody ClienteDto clienteDto) {
@@ -49,6 +56,11 @@ public class ClienteController {
     public ResponseEntity<List<ClienteDto>> listarCliente(){
         List<ClienteDto> listaDto = clienteService.listarCliente();
         return ResponseEntity.status(HttpStatus.OK).body(listaDto);
+    }
+    @PostMapping("/comprar")
+    public ResponseEntity<CompraDto> comprar(@RequestBody CompraDto compraDto, @RequestBody List<ProductoDto> productos){
+        CompraDto compraDto1 = clienteService.comprar(compraDto, productos);
+        return  ResponseEntity.status(HttpStatus.OK).body(compraDto1);
     }
 
 }

@@ -2,6 +2,7 @@ package com.market.Servicio;
 import com.market.Conversion.*;
 import com.market.Dtos.ClienteDto;
 import com.market.Dtos.CompraDto;
+import com.market.Dtos.ProductoDto;
 import com.market.Modelo.*;
 import com.market.Repos.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -15,14 +16,17 @@ public class ClienteService {
     private final conversionCliente conversionCliente;
     private final RepoCliente repoCliente;
     private final conversionCompra conversionCompra;
-
+    private  final RepoEmprendedor repoEmprendedor;
     @Autowired
     public ClienteService(conversionCliente conversionCliente, RepoCliente repoCliente,
-                          conversionCompra conversionCompra) {
+                          conversionCompra conversionCompra, RepoEmprendedor repoEmprendedor) {
         this.conversionCliente = conversionCliente;
         this.repoCliente = repoCliente;
         this.conversionCompra = conversionCompra;
-            }
+        this.repoEmprendedor = repoEmprendedor;
+    }
+
+
     public ClienteDto crearCliente(ClienteDto cdto){
         Cliente c= conversionCliente.volverCliente(cdto);
 
@@ -91,6 +95,21 @@ public class ClienteService {
             listaDto.add(conversionCliente.volverDto(c));
         }
         return listaDto;
+    }
+    public CompraDto comprar(CompraDto compraDto, List <ProductoDto> productos) {
+        Optional<Emprendedor> emprendedorOptional = repoEmprendedor.findById(compraDto.getIdEmprendedor());
+        Optional<Cliente> clienteOptional = repoCliente.findById(compraDto.getIdCliente());
+        Emprendedor e;
+        Cliente c;
+        Compra compra = conversionCompra.volverCompra(compraDto);
+        if(emprendedorOptional.isPresent() && clienteOptional.isPresent()){
+            c = clienteOptional.get();
+            e=emprendedorOptional.get();
+            c.getCompras().add(compra);
+            e.getVentas().add(compra);
+            compra.calcularMonto();
+        }
+        return conversionCompra.volverDto(compra);
     }
 
 

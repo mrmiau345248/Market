@@ -71,6 +71,23 @@ public List<CompraDto> listarCompra(){
     }
     return listaDto;
     }
+//    public List<ProductoDto> traerListaProductos(int id){
+//        Optional<Emprendedor> optionalEmprendedor = repoEmprendedor.findById(id);
+//        Emprendedor emprendedor ;
+//        List<Compra> ventas;
+//        List<CompraDto> ventasDto= new ArrayList<>();
+//        if(optionalEmprendedor.isPresent()) {
+//            emprendedor = optionalEmprendedor.get();
+//            ventas= emprendedor.getVentas();
+//
+//            for(Compra c: ventas){
+//                ventasDto.add(conversionCompra.volverDto(c));
+//
+//            }
+//        }
+//        return ventasDto;
+//    }
+
 }
 
 
