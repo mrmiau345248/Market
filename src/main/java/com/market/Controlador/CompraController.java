@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("api/Marketplace/compra")
 
@@ -41,5 +44,10 @@ public class CompraController {
     public ResponseEntity<CompraDto> eliminarCompra(@PathVariable int id){
         CompraDto nuevaCompra = compraService.deleteCompra(id);
         return ResponseEntity.status(HttpStatus.OK).body(nuevaCompra);
+    }
+    @GetMapping("/listar")
+    public ResponseEntity<List<CompraDto>> listarCompra(){
+        List<CompraDto> listarDto= compraService.listarCompra();
+        return  ResponseEntity.status(HttpStatus.OK).body(listarDto);
     }
 }

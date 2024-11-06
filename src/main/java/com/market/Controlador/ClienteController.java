@@ -5,6 +5,9 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
 import org.springframework.web.bind.annotation.*;
 
+import java.util.List;
+
+@CrossOrigin(origins = "http://localhost:4200")
 @RestController
 @RequestMapping("api/Marketplace/cliente")
 
@@ -18,6 +21,7 @@ public class ClienteController {
     @PostMapping("/crear")
     public ResponseEntity<ClienteDto> crearCliente(@RequestBody ClienteDto clienteDto) {
         ClienteDto nuevoCliente = clienteService.crearCliente(clienteDto);
+        System.out.println(clienteDto.getBirth()+ "!!!!!!!!!!!!!!!!!!!!!!!!!!");
         return ResponseEntity.status(HttpStatus.CREATED).body(nuevoCliente);
     }
     @GetMapping("/traer/{id}")
@@ -41,4 +45,10 @@ public class ClienteController {
         ClienteDto nuevoCliente = clienteService.eliminarCliente(id);
         return ResponseEntity.status(HttpStatus.OK).body(nuevoCliente);
     }
+    @GetMapping("/listar")
+    public ResponseEntity<List<ClienteDto>> listarCliente(){
+        List<ClienteDto> listaDto = clienteService.listarCliente();
+        return ResponseEntity.status(HttpStatus.OK).body(listaDto);
+    }
+
 }

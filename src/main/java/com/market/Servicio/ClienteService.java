@@ -84,6 +84,14 @@ public class ClienteService {
         }
         return comprasDto;
     }
+    public List<ClienteDto> listarCliente(){
+        List<Cliente> lista = repoCliente.findAll();
+        List<ClienteDto> listaDto = new ArrayList<>();
+        for (Cliente c: lista){
+            listaDto.add(conversionCliente.volverDto(c));
+        }
+        return listaDto;
+    }
 
 
 }

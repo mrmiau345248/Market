@@ -3,12 +3,11 @@ import jakarta.persistence.*;
 import lombok.*;
 import java.util.*;
 
-@Setter
+@Data
 @NoArgsConstructor
 @Entity // Anotación para definir que es una entidad de JPA
 @Table(name="emprendedor")
 public class Emprendedor extends Persona {
-    @Getter
     @OneToMany
     @Column(name = "productos")
     private List<Producto> productos ;
@@ -16,7 +15,6 @@ public class Emprendedor extends Persona {
     private Double ingresos;
     @Column(name = "gastos")
     private Double gastos;
-    @Getter
     @OneToMany
     @Column(name = "ventas")
     private List<Compra> ventas;
@@ -30,7 +28,7 @@ public class Emprendedor extends Persona {
         this.ventas = new ArrayList<>();
     }
 
-    public double getGastos() {
+    public double calcularGastos() {
       Double suma=0.0;
       for(Producto p:this.productos){
           suma+= p.getPrecioC();
@@ -39,7 +37,7 @@ public class Emprendedor extends Persona {
     }
 
     // Método para calcular los ingresos
-    public double getIngresos() {
+    public double calcularIngresos() {
     Double suma=0.0;
     for (Producto p:this.productos){
         suma+=p.getPrecioV();
