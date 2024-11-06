@@ -17,7 +17,7 @@
         <h2 class="text-center">Formulario de Pago</h2>
         
         <!-- Formulario de pago -->
-        <form id="paymentForm">
+        <form id="paymentForm" class="formularioPagos">
             <!-- Datos del cliente -->
             <div class="mb-3">
                 <label for="firstName" class="form-label">Nombre</label>
@@ -35,6 +35,10 @@
                     <option value="ti">Tarjeta de Identidad</option>
                     <option value="pasaporte">Pasaporte</option>
                 </select>
+            </div>
+            <div class="mb-3">
+                <label for="idCliente" class="form-label">Numero de Documento</label>
+                <input type="text" class="form-control" id="idCliente" placeholder="Numero de documento" required>
             </div>
 
             <!-- Método de pago -->
