@@ -63,10 +63,10 @@
         </table>
     </section>
 
-    <!-- Submenu de compra -->
-    <div class="submenu" id="purchaseForm">
+       <!-- Submenu de compra -->
+       <div class="submenu" id="purchaseForm" style="display: none;">
         <h3>Detalles de la compra</h3>
-        <form id="purchaseDetails">
+        <form id="purchaseDetails" onsubmit="confirmPurchase(event)">
             <div class="mb-3">
                 <label for="quantity" class="form-label">Cantidad</label>
                 <input type="number" class="form-control" id="quantity" placeholder="Cantidad de productos" required>
@@ -82,20 +82,15 @@
                     <option value="tarjeta">Tarjeta de Crédito</option>
                     <option value="efectivo">Efectivo</option>
                     <option value="paypal">PayPal</option>
+                    <option value="paypal">Nequi</option>
                 </select>
             </div>
-            <button type="submit" class="btn btn-primary" onclick="procesarPago()">Confirmar Compra</button>
+            <button type="submit" class="btn btn-primary">Confirmar Compra</button>
         </form>
     </div>
 
     <script>
-        function procesarPago() {
-            // Redirigir a login.html
-            window.location.href = '../templates/procesarPago.html';
-        }
-
-       function comProduct(productName) {
-            // Obtener el submenú
+        function comProduct(productName) {
             var purchaseForm = document.getElementById("purchaseForm");
 
             // Alternar la visibilidad del submenú
@@ -105,6 +100,11 @@
                 purchaseForm.style.display = "block";  // Mostrar
                 document.getElementById("description").value = productName;  // Actualizar la descripción
             }
+        }
+
+        function confirmPurchase(event) {
+            event.preventDefault(); // Evitar la recarga de la página al enviar el formulario
+            window.location.href = '../templates/procesarPago.html'; // Redirigir a la pasarela de pago
         }
     </script>
 </body>
