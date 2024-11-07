@@ -58,8 +58,8 @@ public class ClienteController {
         return ResponseEntity.status(HttpStatus.OK).body(listaDto);
     }
     @PostMapping("/comprar")
-    public ResponseEntity<CompraDto> comprar(@RequestBody CompraDto compraDto, @RequestBody List<ProductoDto> productos){
-        CompraDto compraDto1 = clienteService.comprar(compraDto, productos);
+    public ResponseEntity<CompraDto> comprar(@RequestBody CompraDto compraDto){
+        CompraDto compraDto1 = clienteService.comprar(compraDto);
         return  ResponseEntity.status(HttpStatus.OK).body(compraDto1);
     }
 

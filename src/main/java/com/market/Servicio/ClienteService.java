@@ -96,7 +96,7 @@ public class ClienteService {
         }
         return listaDto;
     }
-    public CompraDto comprar(CompraDto compraDto, List <ProductoDto> productos) {
+    public CompraDto comprar(CompraDto compraDto) {
         Optional<Emprendedor> emprendedorOptional = repoEmprendedor.findById(compraDto.getIdEmprendedor());
         Optional<Cliente> clienteOptional = repoCliente.findById(compraDto.getIdCliente());
         Emprendedor e;

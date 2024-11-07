@@ -8,7 +8,7 @@ public class conversionCompra {
 public CompraDto volverDto(Compra compra){
     return new CompraDto(compra.getId(),compra.getFecha(),
             compra.getIdCliente(),compra.getIdEmprendedor(),
-            compra.getMetodoPago());
+            compra.getProductosC(),compra.getMetodoPago());
 }
 public Compra volverCompra(CompraDto compraDto){
     return new Compra(compraDto.getId(),compraDto.getFecha(),
