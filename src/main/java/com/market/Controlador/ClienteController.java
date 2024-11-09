@@ -2,7 +2,6 @@ package com.market.Controlador;
 import com.market.Conversion.conversionCompra;
 import com.market.Dtos.ClienteDto;
 import com.market.Dtos.CompraDto;
-import com.market.Dtos.ProductoDto;
 import com.market.Servicio.ClienteService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.*;
